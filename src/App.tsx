@@ -8,7 +8,12 @@ export function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('top');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [dpBlastPhoto, setDpBlastPhoto] = useState<string | null>(null);
+  const [dpBlastScale, setDpBlastScale] = useState(1);
+  const [dpBlastOffsetX, setDpBlastOffsetX] = useState(0);
+  const [dpBlastOffsetY, setDpBlastOffsetY] = useState(0);
   const toastTimeoutRef = useRef<number | null>(null);
+  const dpBlastStageRef = useRef<HTMLDivElement | null>(null);
   const partnerLogos = [
     { src: '/city-iloilo-logo.png', alt: 'City of Iloilo logo', label: 'Iloilo City' },
     { src: '/pasuc-logo.png', alt: 'PASUC logo', label: 'PASUC' },
@@ -91,6 +96,95 @@ export function App() {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setIsNavOpen(false);
+  };
+
+  const handleDpBlastUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      showToast('Please upload an image file');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setDpBlastPhoto(reader.result);
+        showToast('DP photo loaded');
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const resetDpBlast = () => {
+    setDpBlastScale(1);
+    setDpBlastOffsetX(0);
+    setDpBlastOffsetY(0);
+  };
+
+  const loadImage = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+    img.src = src;
+  });
+
+  const downloadDpBlast = async () => {
+    if (!dpBlastPhoto) {
+      showToast('Upload a photo first');
+      return;
+    }
+
+    try {
+      const [userImage, frameImage] = await Promise.all([
+        loadImage(dpBlastPhoto),
+        loadImage('/dp-blast-facebook.png'),
+      ]);
+
+      const canvas = document.createElement('canvas');
+      const outputWidth = frameImage.naturalWidth;
+      const outputHeight = frameImage.naturalHeight;
+      canvas.width = outputWidth;
+      canvas.height = outputHeight;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        showToast('Unable to create download');
+        return;
+      }
+
+      const stageWidth = dpBlastStageRef.current?.clientWidth ?? outputWidth;
+      const stageHeight = dpBlastStageRef.current?.clientHeight ?? outputHeight;
+      const ratioX = outputWidth / stageWidth;
+      const ratioY = outputHeight / stageHeight;
+      const adjustedOffsetX = dpBlastOffsetX * ratioX;
+      const adjustedOffsetY = dpBlastOffsetY * ratioY;
+
+      const baseScale = Math.max(outputWidth / userImage.naturalWidth, outputHeight / userImage.naturalHeight);
+      const drawWidth = userImage.naturalWidth * baseScale;
+      const drawHeight = userImage.naturalHeight * baseScale;
+      const drawX = (outputWidth - drawWidth) / 2;
+      const drawY = (outputHeight - drawHeight) / 2;
+
+      ctx.save();
+      ctx.translate((outputWidth / 2) + adjustedOffsetX, (outputHeight / 2) + adjustedOffsetY);
+      ctx.scale(dpBlastScale, dpBlastScale);
+      ctx.drawImage(userImage, drawX - (outputWidth / 2), drawY - (outputHeight / 2), drawWidth, drawHeight);
+      ctx.restore();
+
+      ctx.drawImage(frameImage, 0, 0, outputWidth, outputHeight);
+
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'ncaf-dp-blast.png';
+      link.click();
+
+      showToast('DP blast downloaded');
+    } catch (error) {
+      showToast('Unable to download DP blast');
+      console.error('DP blast download failed.', error);
+    }
   };
 
   return (
@@ -878,6 +972,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Facebook</h3>
                   <p className="asset-note">Heritage Green base with Banig weave overlay. Left-anchored layout maintains brand clarity at all thumbnail sizes.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-facebook-cover" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -917,6 +1012,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Instagram Story Countdown</h3>
                   <p className="asset-note">Ceremonial orange with concentric ring motifs. The display number anchors the composition as the centrepiece.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-story-countdown" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -954,6 +1050,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Announcement Card</h3>
                   <p className="asset-note">Royal Culture to Heritage Green diagonal. High-contrast white display type for feed impact with an editorial composition.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-announcement-card" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -988,6 +1085,7 @@ export function App() {
                   <span className="asset-category category-presentation">Presentation</span>
                   <h3>Keynote Title Slide</h3>
                   <p className="asset-note">Woven Bone base with Heritage Green accent bar and light grid watermark. Premium editorial negative space throughout.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-keynote-title-slide" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1022,6 +1120,7 @@ export function App() {
                   <span className="asset-category category-print">Print</span>
                   <h3>Event Poster</h3>
                   <p className="asset-note">Bone base with Heritage Green corner bracket accents and a layered typographic hierarchy. Print-safe at 300 DPI on A3.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-event-poster" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1057,6 +1156,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Portrait Pubmat</h3>
                   <p className="asset-note">Stage-dark base with tri-color lighting echoing the full brand palette. Frosted glass info card at bottom for immediate legibility.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-portrait-pubmat" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1095,6 +1195,7 @@ export function App() {
                   <span className="asset-category category-print">Print</span>
                   <h3>Street Banner</h3>
                   <p className="asset-note">Heritage Green to Pagsaulog Orange gradient with Vinta stripe overlay — designed for outdoor rollout, stage backwalls, and venue entry points.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-street-banner" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1138,6 +1239,7 @@ export function App() {
                   <span className="asset-category category-digital">Digital</span>
                   <h3>Email Template</h3>
                   <p className="asset-note">Invitation and announcement layout following 600px email-safe constraints. Heritage Green header for instant brand recognition.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-email-template" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1161,6 +1263,7 @@ export function App() {
                   <span className="asset-category category-video">Video</span>
                   <h3>Video Lower-Third</h3>
                   <p className="asset-note">Glass-frosted name card for livestreams, documentation reels, and interview segments. Orange accent bar ties back to the brand palette.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-video-lower-third" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1183,6 +1286,94 @@ export function App() {
                   <span className="asset-category category-print">Print</span>
                   <h3>Festival Shirt</h3>
                   <p className="asset-note">Official festival garment. Logo and tagline on Woven Bone base — minimal, premium, and culturally rooted.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-festival-shirt" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                </div>
+              </article>
+
+              {/* 11. Display Picture Blast */}
+              <article className="asset-card dp-blast-card reveal" style={{ animationDelay: '0.75s' }}>
+                <div className="asset-canvas portrait dp-blast-bg">
+                  <div className="dp-blast-stage" ref={dpBlastStageRef}>
+                    <span className="dp-stage-badge">DP Preview</span>
+                    {dpBlastPhoto ? (
+                      <img
+                        src={dpBlastPhoto}
+                        alt="Uploaded profile photo preview"
+                        className="dp-user-photo"
+                        style={{ transform: `translate(${dpBlastOffsetX}px, ${dpBlastOffsetY}px) scale(${dpBlastScale})` }}
+                      />
+                    ) : (
+                      <div className="dp-placeholder">
+                        <span className="dp-placeholder-kicker">No photo yet</span>
+                        <span>Upload your photo to preview with the official frame</span>
+                      </div>
+                    )}
+                    <img src="/dp-blast-facebook.png" alt="NCAF DP blast frame" className="dp-blast-frame" />
+                    <span className="dp-stage-tip">Tip: use sliders to center your face in the ring.</span>
+                  </div>
+                  <span className="asset-format-tag" aria-label="1080 by 1080 pixels">1080 × 1080</span>
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-social">Social</span>
+                  <h3>Display Picture Blast</h3>
+                  <p className="asset-note">Interactive profile-frame mockup. Upload a photo, then adjust zoom and position like Twibbon-style framing for instant rollout previews.</p>
+
+                  <div className="dp-controls">
+                    <div className="dp-controls-head">
+                      <p className="dp-controls-title">Photo controls</p>
+                      <span className="dp-controls-chip">Live</span>
+                    </div>
+
+                    <div className="dp-upload-row">
+                      <label className="dp-upload-label">
+                        Choose photo
+                        <input className="dp-upload-input" type="file" accept="image/*" onChange={handleDpBlastUpload} />
+                      </label>
+                      <button type="button" className="dp-reset-btn" onClick={resetDpBlast}>Reset</button>
+                      <button type="button" className="dp-download-btn" onClick={downloadDpBlast} disabled={!dpBlastPhoto}>Download PNG</button>
+                    </div>
+
+                    <label className="dp-control">
+                      <span>Zoom</span>
+                      <input
+                        type="range"
+                        min="0.7"
+                        max="2.2"
+                        step="0.01"
+                        value={dpBlastScale}
+                        onChange={(e) => setDpBlastScale(Number(e.target.value))}
+                      />
+                      <strong>{dpBlastScale.toFixed(2)}x</strong>
+                    </label>
+
+                    <label className="dp-control">
+                      <span>Horizontal</span>
+                      <input
+                        type="range"
+                        min="-140"
+                        max="140"
+                        step="1"
+                        value={dpBlastOffsetX}
+                        onChange={(e) => setDpBlastOffsetX(Number(e.target.value))}
+                      />
+                      <strong>{dpBlastOffsetX}px</strong>
+                    </label>
+
+                    <label className="dp-control">
+                      <span>Vertical</span>
+                      <input
+                        type="range"
+                        min="-140"
+                        max="140"
+                        step="1"
+                        value={dpBlastOffsetY}
+                        onChange={(e) => setDpBlastOffsetY(Number(e.target.value))}
+                      />
+                      <strong>{dpBlastOffsetY}px</strong>
+                    </label>
+                  </div>
+
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-dp-blast" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
