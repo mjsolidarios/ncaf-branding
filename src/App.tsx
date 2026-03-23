@@ -85,7 +85,7 @@ export function App() {
         <div className="container hero-grid">
           <div className="hero-copy reveal">
             <p className="eyebrow">2026 National Culture and Arts Festival</p>
-            <h1>The Living Archive, retold as a cultural brand system.</h1>
+            <h1>Celebrating the Riches of Our Roots, retold as a cultural brand system.</h1>
             <p className="hero-lead">
               This guide turns the NCAF identity into an immersive, modern, and deeply rooted visual language.
               It blends heritage, celebration, and contemporary editorial design so every touchpoint feels
@@ -148,11 +148,11 @@ export function App() {
       <nav className="site-nav">
         <div className="container nav-inner">
           <a href="#top" className="nav-brand" onClick={(e) => scrollToSection(e, 'top')}>NCAF 2026</a>
-          <button 
-            className="nav-toggle" 
-            type="button" 
-            aria-expanded={isNavOpen} 
-            aria-controls="primary-nav" 
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-expanded={isNavOpen}
+            aria-controls="primary-nav"
             aria-label="Toggle navigation"
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
@@ -236,8 +236,8 @@ export function App() {
                   <div className="color-details">
                     <span className="asset-type">{color.label}</span>
                     <p className="color-name">{color.name}</p>
-                    <button 
-                      className="color-token" 
+                    <button
+                      className="color-token"
                       data-copy={color.hex}
                       onClick={() => copyToClipboard(color.hex)}
                     >
@@ -325,30 +325,6 @@ export function App() {
                 </ul>
               </article>
             </div>
-
-            <div className="component-grid">
-              <article className="component-card">
-                <h3>Festival Components</h3>
-                <p>Custom inputs and buttons that utilize heritage gradients and pill-shaped geometry.</p>
-                <div className="festival-card">
-                  <h4>Register for NCAF</h4>
-                  <div className="input-shell">
-                    <label className="type-label">Full Name</label>
-                    <input type="text" className="input-field" placeholder="Juan dela Cruz" />
-                  </div>
-                  <Button className="btn-primary mt-6 w-full">Join the archive</Button>
-                </div>
-              </article>
-
-              <article className="component-card">
-                <h3>Glass & Blur</h3>
-                <p>Used for floating navigation and top-level alerts to allow the background motifs to bleed through.</p>
-                <div className="glass-panel p-8 rounded-3xl mt-4">
-                  <span className="glass-pill">Brand Alert</span>
-                  <h4 className="mt-2 text-brand-primary font-serif text-xl">System rollout begins April 2026.</h4>
-                </div>
-              </article>
-            </div>
           </div>
         </section>
 
@@ -370,7 +346,7 @@ export function App() {
                   <img src="/brand-logo.png" alt="" className="asset-logo mb-4" />
                   <div className="asset-copy">
                     <span className="glass-pill">Social Header</span>
-                    <h4>The Living Archive</h4>
+                    <h4>Celebrating the Riches of Our Roots</h4>
                   </div>
                   <span className="asset-format-tag" aria-label="1200 by 628 pixels">1200 × 628</span>
                 </div>
@@ -481,7 +457,7 @@ export function App() {
                   <div className="flex items-center gap-8 z-10 px-8">
                     <img src="/brand-logo.png" alt="" className="asset-logo" />
                     <div className="h-16 w-px bg-white/20"></div>
-                    <h4 className="max-w-[12ch] text-white">The Living Archive</h4>
+                    <h4 className="max-w-[12ch] text-white">Celebrating the Riches of Our Roots</h4>
                   </div>
                   <div className="z-10 px-8 text-right text-white">
                     <p className="font-bold tracking-widest uppercase text-sm">March 2026</p>

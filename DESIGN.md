@@ -2,7 +2,7 @@
 
 ## 1. Overview & Creative North Star
 
-The Creative North Star for this design system is **"The Living Archive."** 
+The Creative North Star for this design system is **"Celebrating the Riches of Our Roots."** 
 
 This system moves beyond a standard event website and into the realm of high-end editorial curation. It treats the 2026 National Culture and Arts Festival not just as a date on a calendar, but as a prestigious, breathing exhibition of heritage. To capture the spirit of *Pagsaulog* (Celebration), the UI abandons rigid, boxy layouts in favor of **Dynamic Asymmetry** and **Textural Depth**. 
 
