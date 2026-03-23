@@ -50,23 +50,7 @@ In this system, depth is a feeling, not a shadow. We avoid the "floating card" c
 
 ---
 
-## 5. Components
-
-### Buttons & Interaction
-*   **Primary Button:** Uses a subtle gradient from `primary` to `primary-dim`. Roundedness: `full` (pill shape) to mimic the organic curves of the masks.
-*   **Secondary Button:** A "Ghost" style. No fill, but a `secondary` colored label with a 20% opacity `outline`.
-*   **Chips:** Used for festival categories (e.g., "Music," "Visual Arts"). Use `tertiary-container` backgrounds with `on-tertiary-container` text.
-
-### Cards & Content Lists
-*   **Festival Cards:** No dividers. Use `surface-container-highest` for the card background against a `surface` background. Use `Spacing 6` (2rem) as the internal gutter.
-*   **Organic Motifs:** Backgrounds of cards should occasionally feature a low-opacity (5%) musical note or mask icon, partially cropped off the edge to create an "uncontained" artistic feel.
-
-### Input Fields
-*   **Style:** Minimalist. Bottom-border only using `outline-variant`, which transitions to `primary` (2px thickness) on focus. No boxed containers.
-
----
-
-## 6. Do’s and Don’ts
+## 5. Do’s and Don’ts
 
 ### Do:
 *   **DO** use the **Spacing Scale** religiously. High-end design thrives on "breathing room." When in doubt, increase the margin.

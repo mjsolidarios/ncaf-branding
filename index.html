@@ -81,10 +81,10 @@
         <nav class="site-nav">
             <div class="container nav-inner">
                 <a href="#top" class="nav-brand">NCAF 2026</a>
-                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span></span>
-                    <span></span>
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+                    <span class="nav-toggle-icon"></span>
+                    <span class="nav-toggle-icon"></span>
+                    <span class="nav-toggle-icon"></span>
                 </button>
 
                 <ul class="nav-links" id="primary-nav">
@@ -92,7 +92,6 @@
                     <li><a href="#colors">Palette</a></li>
                     <li><a href="#typography">Type</a></li>
                     <li><a href="#experience">Layers</a></li>
-                    <li><a href="#components">Components</a></li>
                     <li><a href="#brand-assets">Brand Assets</a></li>
                     <li><a href="#dos-donts">Rules</a></li>
                 </ul>
@@ -261,55 +260,6 @@
                 </div>
             </section>
 
-            <section id="components" class="section reveal">
-                <div class="container">
-                    <div class="section-intro">
-                        <p class="section-kicker">Components</p>
-                        <h2>Reusable pieces should still feel expressive and handcrafted.</h2>
-                    </div>
-
-                    <div class="component-grid">
-                        <article class="component-card">
-                            <h3>Buttons</h3>
-                            <div class="button-examples">
-                                <button class="btn btn-primary" type="button">Launch campaign</button>
-                                <button class="btn btn-secondary" type="button">View reference</button>
-                            </div>
-                            <p>Pill silhouettes and nuanced gradients keep actions ceremonial rather than mechanical.</p>
-                        </article>
-
-                        <article class="component-card">
-                            <h3>Chips</h3>
-                            <div class="chip-examples">
-                                <span class="chip">Music</span>
-                                <span class="chip">Visual Arts</span>
-                                <span class="chip">Dance</span>
-                                <span class="chip">Heritage Talks</span>
-                            </div>
-                            <p>Use chips to classify disciplines, programs, and content series.</p>
-                        </article>
-
-                        <article class="component-card">
-                            <h3>Feature card</h3>
-                            <div class="festival-card">
-                                <p class="card-kicker">Festival spotlight</p>
-                                <h4>Evening of living traditions</h4>
-                                <p>An editorial card style for schedules, artists, and campaign callouts.</p>
-                            </div>
-                        </article>
-
-                        <article class="component-card">
-                            <h3>Input field</h3>
-                            <label class="input-shell">
-                                <span>Name for accreditation</span>
-                                <input type="text" class="input-field" placeholder="Enter your full name">
-                            </label>
-                            <p>Inputs should be minimal and elegant, with focus indicated through color and motion.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
             <section id="brand-assets" class="section section-assets reveal">
                 <div class="container">
                     <div class="section-intro">
@@ -337,6 +287,22 @@
                                 </div>
                             </div>
                             <p class="asset-note">Use broad gradients, generous margins, and a ceremonial headline for page headers and event covers.</p>
+                        </article>
+
+                        <article class="asset-card presentation-card">
+                            <div class="asset-meta">
+                                <p class="asset-type">Presentation deck</p>
+                                <h3>Section title slide</h3>
+                            </div>
+                            <div class="asset-canvas landscape presentation">
+                                <div class="asset-texture" style="background-image: radial-gradient(rgba(64, 110, 81, 0.1) 1px, transparent 1px);"></div>
+                                <div class="asset-motif motif-tr" style="color: rgba(64, 110, 81, 0.05); top: -2rem;">♪</div>
+                                <div class="asset-copy" style="background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(255,255,255,1);">
+                                    <p class="asset-tag glass-pill" style="color: var(--primary); border-color: var(--primary);">01 / Introduction</p>
+                                    <h4 style="color: var(--primary-dim);">The heartbeat of the archipelago</h4>
+                                </div>
+                            </div>
+                            <p class="asset-note">Keep presentation slides breathing with Canvas Cream, avoiding heavy background colors for legibility.</p>
                         </article>
 
                         <article class="asset-card countdown-card">
@@ -390,6 +356,22 @@
                             <p class="asset-note">Use for speaker cards, artist features, and vertical story placements.</p>
                         </article>
 
+                        <article class="asset-card tarp-card">
+                            <div class="asset-meta">
+                                <p class="asset-type">Print Tarp / Billboard</p>
+                                <h3>Main venue horizontal banner</h3>
+                            </div>
+                            <div class="asset-canvas tarp">
+                                <div class="asset-texture"></div>
+                                <div class="asset-motif motif-tr" style="font-size: 24rem; top: -10rem;">✧</div>
+                                <div class="asset-copy" style="flex: 1;">
+                                    <h4 style="font-size: clamp(1.8rem, 3.5vw, 3rem); margin-bottom: 0.5rem; color: #fff;">Welcome to<br>Pagsaulog 2026</h4>
+                                </div>
+                                <img src="brand-logo.png" alt="NCAF 2026 logo" class="asset-logo" style="position: relative; z-index: 5; margin-right: 2rem; width: 8rem;">
+                            </div>
+                            <p class="asset-note">For wide-format prints, dramatically crop the motif to fill the empty horizontal space.</p>
+                        </article>
+
                         <article class="asset-card poster-card">
                             <div class="asset-meta">
                                 <p class="asset-type">General pubmat</p>
@@ -409,6 +391,27 @@
                                 </div>
                             </div>
                             <p class="asset-note">Ideal for print-style pubmats, posters, and campus or LGU information boards.</p>
+                        </article>
+
+                        <article class="asset-card video-card">
+                            <div class="asset-meta">
+                                <p class="asset-type">Video</p>
+                                <h3>Documentary lower third & thumbnail</h3>
+                            </div>
+                            <div class="asset-canvas landscape video">
+                                <div class="asset-texture"></div>
+                                <div class="asset-motif motif-bl" style="font-size: 16rem; left: -4rem;">❋</div>
+                                <div style="position: absolute; inset: 0; display: grid; place-items: center; z-index: 2;">
+                                    <div style="width: 4rem; height: 4rem; border-radius: 50%; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); display: grid; place-items: center; border: 2px solid #fff;">
+                                        <span style="display: block; width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid #fff; margin-left: 5px;"></span>
+                                    </div>
+                                </div>
+                                <div class="asset-copy" style="background: linear-gradient(90deg, var(--primary) 0%, rgba(64,110,81,0.9) 100%);">
+                                    <h4 style="font-size: 1.25rem;">Maria Clara Diwa</h4>
+                                    <p class="asset-subcopy" style="margin-top: 0.1rem; font-size: 0.9rem;">Master Weaver, Iloilo</p>
+                                </div>
+                            </div>
+                            <p class="asset-note">Overlay video graphics inside heavy glassmorphism or solid primary tones to ensure contrast with moving footage.</p>
                         </article>
                     </div>
 
