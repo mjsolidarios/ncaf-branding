@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Loom Pathways overlay — transparent background for use on coloured surfaces">
+  <defs>
+    <!-- Vertical loom columns -->
+    <pattern id="lp-v" width="44" height="44" patternUnits="userSpaceOnUse">
+      <rect x="0"  width="11" height="44" fill="white" fill-opacity="0.16"/>
+      <rect x="11" width="11" height="44" fill="white" fill-opacity="0.02"/>
+      <rect x="22" width="11" height="44" fill="white" fill-opacity="0.13"/>
+      <rect x="33" width="11" height="44" fill="white" fill-opacity="0.10"/>
+    </pattern>
+    <!-- Horizontal weft rows -->
+    <pattern id="lp-h" width="44" height="28" patternUnits="userSpaceOnUse">
+      <rect y="0"  width="44" height="14" fill="white" fill-opacity="0.08"/>
+      <rect y="14" width="44" height="14" fill="white" fill-opacity="0.02"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#lp-v)"/>
+  <rect width="1200" height="1200" fill="url(#lp-h)"/>
+</svg>

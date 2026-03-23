@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Vinta Sails pattern">
+  <defs>
+    <pattern id="vinta" width="110" height="110" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+      <rect width="110" height="110" fill="#F7F2E7"/>
+      <rect width="22" height="110" fill="#406E51" fill-opacity="0.34"/>
+      <rect x="22" width="22" height="110" fill="#406E51" fill-opacity="0.10"/>
+      <rect x="44" width="22" height="110" fill="#9C5000" fill-opacity="0.30"/>
+      <rect x="66" width="22" height="110" fill="#834AAE" fill-opacity="0.30"/>
+      <rect x="88" width="22" height="110" fill="#FEFCF1" fill-opacity="0.72"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#vinta)"/>
+</svg>

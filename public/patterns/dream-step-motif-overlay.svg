@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Dream Step Motif overlay — transparent background for use on coloured surfaces">
+  <defs>
+    <!-- Stepped quarter-tile geometry echoing conic gradient -->
+    <pattern id="ds" width="44" height="44" patternUnits="userSpaceOnUse">
+      <!-- Bottom-right quadrant fill -->
+      <path d="M0 44 L0 22 L22 0 L44 0 L44 44 Z" fill="white" fill-opacity="0.16"/>
+      <!-- Top-left notch -->
+      <path d="M0 0 L22 0 L0 22 Z"               fill="white" fill-opacity="0.08"/>
+      <!-- Step stroke accent -->
+      <polyline points="0,22 22,0" fill="none" stroke="white" stroke-width="0.8" stroke-opacity="0.22"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#ds)"/>
+</svg>

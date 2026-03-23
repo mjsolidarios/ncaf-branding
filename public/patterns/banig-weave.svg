@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Banig Weave pattern">
+  <defs>
+    <pattern id="banig-a" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="48" height="48" fill="#F7F2E7"/>
+      <rect width="12" height="48" fill="#406E51" fill-opacity="0.30"/>
+      <rect x="12" width="12" height="48" fill="#9C5000" fill-opacity="0.24"/>
+      <rect x="24" width="12" height="48" fill="#834AAE" fill-opacity="0.20"/>
+      <rect x="36" width="12" height="48" fill="#FEFCF1" fill-opacity="0.82"/>
+    </pattern>
+    <pattern id="banig-b" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect width="56" height="56" fill="none"/>
+      <rect width="9" height="56" fill="#406E51" fill-opacity="0.12"/>
+      <rect x="9" width="9" height="56" fill="#FEFCF1" fill-opacity="0.25"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#banig-a)"/>
+  <rect width="1200" height="1200" fill="url(#banig-b)"/>
+</svg>

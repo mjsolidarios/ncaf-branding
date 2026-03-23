@@ -130,3 +130,42 @@
         transform: none;
     }
 }
+
+/* =============================================================
+   STAGE DISPLAY / DARK SURFACE TOKENS
+   Use .stage-display on a root element for screen-projected
+   content: countdown displays, stage backdrops, livestream OBS
+   scenes, and video lower-thirds.
+   ============================================================= */
+
+.stage-display {
+    --background: #1a1a18;
+    --foreground: #f0ece0;
+    --card: #242421;
+    --card-foreground: #f0ece0;
+    --primary: #6aad82;
+    --primary-foreground: #1a1a18;
+    --secondary: #d47a2a;
+    --secondary-foreground: #1a1a18;
+    --muted: #2e2e2a;
+    --muted-foreground: #a0998c;
+    --accent: #2e2e2a;
+    --accent-foreground: #6aad82;
+    --border: rgba(240, 236, 224, 0.1);
+    --ring: #a87fd4;
+
+    /* brand-specific */
+    --primary-dim: #4e8a64;
+    --secondary-soft: #e08a3a;
+    --tertiary: #a87fd4;
+    --surface: #1a1a18;
+    --on-surface: #f0ece0;
+    --on-surface-soft: #a0998c;
+    --surface-container-low: #222220;
+    --surface-container-lowest: #1e1e1c;
+    --surface-container-highest: #2e2e2a;
+    --glass: rgba(255, 255, 255, 0.06);
+
+    background-color: var(--background);
+    color: var(--foreground);
+}

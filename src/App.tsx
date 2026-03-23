@@ -9,7 +9,6 @@ export function App() {
   const toastTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
-    // Intersection Observer for reveal animations
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -25,7 +24,6 @@ export function App() {
     const revealItems = document.querySelectorAll('.reveal');
     revealItems.forEach((item) => revealObserver.observe(item));
 
-    // Intersection Observer for active nav links
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -138,7 +136,7 @@ export function App() {
               </article>
               <article className="mood-tile archive">
                 <span className="tile-label">Tone</span>
-                <strong>Warm editorial archive</strong>
+                <strong>Warm royal culture</strong>
               </article>
             </div>
           </div>
@@ -163,16 +161,24 @@ export function App() {
 
           <ul className={`nav-links ${isNavOpen ? 'is-open' : ''}`} id="primary-nav">
             <li><a href="#overview" className={activeSection === 'overview' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'overview')}>Story</a></li>
+            <li><a href="#logo" className={activeSection === 'logo' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'logo')}>Logo</a></li>
             <li><a href="#colors" className={activeSection === 'colors' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'colors')}>Palette</a></li>
+            <li><a href="#patterns" className={activeSection === 'patterns' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'patterns')}>Patterns</a></li>
             <li><a href="#typography" className={activeSection === 'typography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'typography')}>Type</a></li>
+            <li><a href="#voice" className={activeSection === 'voice' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'voice')}>Voice</a></li>
+            <li><a href="#photography" className={activeSection === 'photography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'photography')}>Photo</a></li>
+            <li><a href="#grid" className={activeSection === 'grid' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'grid')}>Grid</a></li>
+            <li><a href="#motion" className={activeSection === 'motion' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'motion')}>Motion</a></li>
             <li><a href="#experience" className={activeSection === 'experience' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'experience')}>Layers</a></li>
-            <li><a href="#brand-assets" className={activeSection === 'brand-assets' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'brand-assets')}>Brand Assets</a></li>
+            <li><a href="#accessibility" className={activeSection === 'accessibility' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'accessibility')}>A11y</a></li>
+            <li><a href="#brand-assets" className={activeSection === 'brand-assets' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'brand-assets')}>Assets</a></li>
             <li><a href="#dos-donts" className={activeSection === 'dos-donts' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'dos-donts')}>Rules</a></li>
           </ul>
         </div>
       </nav>
 
       <main>
+        {/* ── BRAND NARRATIVE ───────────────────────────────────────────── */}
         <section id="overview" className="section section-story reveal">
           <div className="container section-grid">
             <div className="section-intro">
@@ -213,6 +219,64 @@ export function App() {
           </div>
         </section>
 
+        {/* ── LOGO SYSTEM ───────────────────────────────────────────────── */}
+        <section id="logo" className="section section-logo reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Logo system</p>
+              <h2>Give the cultural swoosh room to breathe.</h2>
+              <p className="section-lead">
+                The NCAF logo carries the full weight of the festival's identity. Consistent, respectful use preserves its ceremonial presence across every touchpoint.
+              </p>
+            </div>
+
+            <div className="logo-rules-grid">
+              <article className="logo-rule-card clearspace-card">
+                <h3>Clear Space</h3>
+                <p>Maintain a minimum clear space equal to half the logo's height on all four sides. No text, other marks, or graphic elements may enter this zone.</p>
+                <div className="clearspace-demo">
+                  <div className="clearspace-outer">
+                    <img src="/brand-logo.png" alt="NCAF logo clear space demonstration" className="clearspace-logo" />
+                  </div>
+                  <p className="clearspace-caption">½ logo height on all sides</p>
+                </div>
+              </article>
+
+              <article className="logo-rule-card">
+                <h3>Approved Surfaces</h3>
+                <p>The logo may appear on these backgrounds. Always verify sufficient contrast before placing on photographic or textured surfaces.</p>
+                <div className="logo-bg-grid">
+                  {[
+                    { bg: '#FEFCF1', label: 'Woven Bone', dark: true },
+                    { bg: '#406E51', label: 'Heritage Green', dark: false },
+                    { bg: '#383831', label: 'On-Surface', dark: false },
+                    { bg: '#F7F2E7', label: 'Surface Low', dark: true },
+                  ].map(surf => (
+                    <div key={surf.bg} className={`logo-bg-swatch ${surf.dark ? 'swatch-dark-label' : 'swatch-light-label'}`} style={{ background: surf.bg }}>
+                      <img src="/brand-logo.png" alt="" className={`bg-swatch-logo ${surf.dark ? '' : 'invert-logo'}`} />
+                      <span className="bg-label">{surf.label}</span>
+                      <span className="bg-approved-tag" aria-label="approved">✓</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+
+              <article className="logo-rule-card prohibitions-card">
+                <h3>Never Do This</h3>
+                <ul className="prohibition-list">
+                  <li><span className="prohibition-x" aria-hidden="true">✕</span><span><strong>Stretch or distort</strong> the logo's proportions in any direction.</span></li>
+                  <li><span className="prohibition-x" aria-hidden="true">✕</span><span><strong>Recolor</strong> using off-brand or unapproved palette colors.</span></li>
+                  <li><span className="prohibition-x" aria-hidden="true">✕</span><span><strong>Apply effects</strong> — no drop shadows, glows, bevels, or outlines.</span></li>
+                  <li><span className="prohibition-x" aria-hidden="true">✕</span><span><strong>Rotate</strong> the logo at any angle.</span></li>
+                  <li><span className="prohibition-x" aria-hidden="true">✕</span><span><strong>Place on busy</strong> photographic or densely patterned backgrounds.</span></li>
+                  <li><span className="prohibition-x" aria-hidden="true">✕</span><span><strong>Use below minimum size:</strong> 48px digital · 15mm print.</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── COLOR PALETTE ─────────────────────────────────────────────── */}
         <section id="colors" className="section section-palette reveal">
           <div className="container">
             <div className="section-intro">
@@ -262,7 +326,8 @@ export function App() {
                       data-copy={color.hex}
                       onClick={() => copyToClipboard(color.hex)}
                     >
-                      {color.hex}
+                      <span className="color-token-icon" aria-hidden="true">⧉</span>
+                      <span>{color.hex}</span>
                     </button>
                     <p className="color-meaning">{color.meaning}</p>
                   </div>
@@ -283,6 +348,111 @@ export function App() {
           </div>
         </section>
 
+        {/* ── PATTERN LANGUAGE ──────────────────────────────────────────── */}
+        <section id="patterns" className="section section-patterns reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Pattern language</p>
+              <h2>Cultural repeating patterns for social cards, posters, and stage mockups.</h2>
+              <p className="section-lead">
+                Use these motifs as overlays, section fills, or corner accents. The expanded set includes references to Filipino dream weaving rhythms for deeper cultural texture.
+              </p>
+            </div>
+
+            <div className="pattern-grid">
+              <article className="pattern-card">
+                <div className="pattern-preview pattern-banig"></div>
+                <div className="pattern-meta">
+                  <p className="asset-type">Banig Weave</p>
+                  <h3>Woven Rhythm</h3>
+                  <p className="asset-note">Cross-thread geometry inspired by handwoven mats. Best for hero backgrounds and presentation covers.</p>
+                  <div className="pattern-download-group">
+                    <a className="pattern-download" href="/patterns/banig-weave.svg" download>Download SVG</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/banig-weave-overlay.svg" download>Download Overlay</a>
+                  </div>
+                </div>
+              </article>
+
+              <article className="pattern-card">
+                <div className="pattern-preview pattern-kulintang"></div>
+                <div className="pattern-meta">
+                  <p className="asset-type">Kulintang Echo</p>
+                  <h3>Festival Pulse</h3>
+                  <p className="asset-note">Repeating arcs that mimic percussion resonance. Ideal for countdown cards and story templates.</p>
+                  <div className="pattern-download-group">
+                    <a className="pattern-download" href="/patterns/kulintang-echo.svg" download>Download SVG</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/kulintang-echo-overlay.svg" download>Download Overlay</a>
+                  </div>
+                </div>
+              </article>
+
+              <article className="pattern-card">
+                <div className="pattern-preview pattern-vinta"></div>
+                <div className="pattern-meta">
+                  <p className="asset-type">Vinta Sails</p>
+                  <h3>Processional Stripes</h3>
+                  <p className="asset-note">Layered directional bands suggesting movement and celebration. Works well in banner and tarp mockups.</p>
+                  <div className="pattern-download-group">
+                    <a className="pattern-download" href="/patterns/vinta-sails.svg" download>Download SVG</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/vinta-sails-overlay.svg" download>Download Overlay</a>
+                  </div>
+                </div>
+              </article>
+
+              <article className="pattern-card">
+                <div className="pattern-preview pattern-tnalak"></div>
+                <div className="pattern-meta">
+                  <p className="asset-type">T'nalak Tribute</p>
+                  <h3>T'nalak Memory</h3>
+                  <p className="asset-note">Interlocking diagonals inspired by sacred cloth rhythm. Use for hero overlays and ceremonial title cards.</p>
+                  <div className="pattern-download-group">
+                    <a className="pattern-download" href="/patterns/tnalak-memory.svg" download>Download SVG</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/tnalak-memory-overlay.svg" download>Download Overlay</a>
+                  </div>
+                </div>
+              </article>
+
+              <article className="pattern-card">
+                <div className="pattern-preview pattern-loom"></div>
+                <div className="pattern-meta">
+                  <p className="asset-type">Loom Heritage</p>
+                  <h3>Loom Pathways</h3>
+                  <p className="asset-note">Layered stripe pathways echoing hand-guided loom movement. Great for section dividers and carousel backgrounds.</p>
+                  <div className="pattern-download-group">
+                    <a className="pattern-download" href="/patterns/loom-pathways.svg" download>Download SVG</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/loom-pathways-overlay.svg" download>Download Overlay</a>
+                  </div>
+                </div>
+              </article>
+
+              <article className="pattern-card">
+                <div className="pattern-preview pattern-sikad"></div>
+                <div className="pattern-meta">
+                  <p className="asset-type">Ancestral Motif</p>
+                  <h3>Dream Step Motif</h3>
+                  <p className="asset-note">Stepped geometric repetition with soft color cadence. Ideal for poster borders and lower-third accents.</p>
+                  <div className="pattern-download-group">
+                    <a className="pattern-download" href="/patterns/dream-step-motif.svg" download>Download SVG</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/dream-step-motif-overlay.svg" download>Download Overlay</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div className="pattern-guidelines">
+              <article className="guideline-card">
+                <h3>Usage ratio</h3>
+                <p>Keep motifs between 8% and 18% opacity in content-heavy layouts to preserve readability.</p>
+              </article>
+              <article className="guideline-card">
+                <h3>Layering rule</h3>
+                <p>Place patterns behind cards or fade them into corners. Avoid placing dense motifs directly beneath body text.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TYPOGRAPHY ────────────────────────────────────────────────── */}
         <section id="typography" className="section section-typography reveal">
           <div className="container section-grid two-up">
             <div className="section-intro">
@@ -314,6 +484,234 @@ export function App() {
           </div>
         </section>
 
+        {/* ── VOICE & TONE ──────────────────────────────────────────────── */}
+        <section id="voice" className="section section-voice reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Voice & tone</p>
+              <h2>The festival speaks with pride, warmth, and cultural conviction.</h2>
+              <p className="section-lead">
+                Visual and verbal identity are inseparable. Every caption, headline, and announcement should feel as carefully crafted as the design it accompanies.
+              </p>
+            </div>
+
+            <div className="voice-grid">
+              <article className="voice-personality-card story-card">
+                <h3>Brand Personality</h3>
+                <p>When the brand speaks, it should feel like all of these traits at once:</p>
+                <div className="personality-chips">
+                  {['Ceremonial', 'Communal', 'Proud', 'Warm', 'Inviting', 'Living Heritage', 'Editorial', 'Contemporary'].map(word => (
+                    <span key={word} className="personality-chip">{word}</span>
+                  ))}
+                </div>
+              </article>
+
+              <article className="tone-spectrum-card story-card">
+                <h3>Tone by Context</h3>
+                <div className="tone-rows">
+                  {[
+                    { context: 'Official announcements', position: 85, desc: 'Formal, ceremonial' },
+                    { context: 'Social captions', position: 40, desc: 'Warm, conversational' },
+                    { context: 'Event programs', position: 70, desc: 'Editorial, precise' },
+                    { context: 'Countdown teasers', position: 25, desc: 'Energetic, celebratory' },
+                  ].map(row => (
+                    <div key={row.context} className="tone-row">
+                      <span className="tone-context">{row.context}</span>
+                      <div className="tone-track">
+                        <div className="tone-handle" style={{ left: `${row.position}%` }}></div>
+                      </div>
+                      <span className="tone-desc">{row.desc}</span>
+                    </div>
+                  ))}
+                  <div className="tone-axis">
+                    <span>Playful</span>
+                    <span>Formal</span>
+                  </div>
+                </div>
+              </article>
+
+              <div className="copy-examples-grid">
+                <article className="copy-example copy-do">
+                  <span className="copy-label copy-label-do">Write like this</span>
+                  <p className="copy-sample">"Join us in celebrating the living traditions that define our people — woven, sung, and passed down through generations."</p>
+                </article>
+                <article className="copy-example copy-dont">
+                  <span className="copy-label copy-label-dont">Not like this</span>
+                  <p className="copy-sample">"NCAF 2026 is an event happening in Iloilo. Come and attend the performances and cultural shows."</p>
+                </article>
+              </div>
+
+              <article className="language-card glass-panel">
+                <h3>Language Integration</h3>
+                <p>NCAF touchpoints may use Filipino, Hiligaynon, or English. Follow these three principles:</p>
+                <ul className="usage-list">
+                  <li><strong>Lead in the local tongue</strong> for community-facing content; follow with an English translation where needed.</li>
+                  <li><strong>Never mix languages within a single headline.</strong> Keep it all-Filipino or all-English.</li>
+                  <li><strong>Use culturally resonant words</strong> — pagsaulog, katutubong sining, kultura — rather than generic English translations.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PHOTOGRAPHY ───────────────────────────────────────────────── */}
+        <section id="photography" className="section section-photography reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Photography direction</p>
+              <h2>Images that carry the weight of heritage and the energy of celebration.</h2>
+              <p className="section-lead">
+                Photography is where the brand meets reality. Every image chosen or commissioned for NCAF should carry the same warmth, depth, and ceremony as the visual identity.
+              </p>
+            </div>
+
+            <div className="photo-guide-grid">
+              <article className="photo-style-card">
+                <div className="photo-style-preview photo-cultural-moments"></div>
+                <div className="photo-style-meta">
+                  <span className="asset-type">Style 01</span>
+                  <h3>Cultural Moments</h3>
+                  <p className="asset-note">Wide ceremonial compositions and crowd energy in festive dress. Favor warm-shifted grading that echoes Heritage Green and Pagsaulog Orange in the shadows.</p>
+                </div>
+              </article>
+              <article className="photo-style-card">
+                <div className="photo-style-preview photo-craft-detail"></div>
+                <div className="photo-style-meta">
+                  <span className="asset-type">Style 02</span>
+                  <h3>Craft & Texture Detail</h3>
+                  <p className="asset-note">Tight, shallow-depth shots of weaving, pottery, and traditional garments. Texture should feel tangible. Prefer natural and warm artificial light sources.</p>
+                </div>
+              </article>
+              <article className="photo-style-card">
+                <div className="photo-style-preview photo-stage-energy"></div>
+                <div className="photo-style-meta">
+                  <span className="asset-type">Style 03</span>
+                  <h3>Stage Energy</h3>
+                  <p className="asset-note">High-contrast performance shots where stage lighting echoes the brand palette — deep greens, ceremonial oranges, and royal purples define the shadows.</p>
+                </div>
+              </article>
+            </div>
+
+            <div className="photo-avoid-section">
+              <h3 className="photo-avoid-heading">Avoid</h3>
+              <div className="photo-avoid-grid">
+                {[
+                  'Cold, desaturated, or blue-shifted color grading.',
+                  'Generic stock photography that lacks cultural specificity.',
+                  'Flat, overexposed images with no tonal depth or shadow.',
+                  'Modern, unrelated settings that dilute the festive context.',
+                ].map(text => (
+                  <div key={text} className="photo-avoid-item">
+                    <span className="prohibition-x" aria-hidden="true">✕</span>
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── GRID & SPACING ────────────────────────────────────────────── */}
+        <section id="grid" className="section section-grid-spacing reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Grid & spacing</p>
+              <h2>Structure that breathes.</h2>
+              <p className="section-lead">
+                The brand's "generous spacing" principle requires a concrete scale. All layout decisions — digital and print — draw from these named values.
+              </p>
+            </div>
+
+            <div className="spacing-scale">
+              {[
+                { name: 'XS', px: 4, use: 'Icon gap, chip padding' },
+                { name: 'S', px: 8, use: 'Tight element grouping' },
+                { name: 'M', px: 16, use: 'Component padding, form fields' },
+                { name: 'L', px: 24, use: 'Card inner padding, item gaps' },
+                { name: 'XL', px: 48, use: 'Between sections on mobile' },
+                { name: '2XL', px: 80, use: 'Vertical section rhythm on desktop' },
+                { name: '3XL', px: 128, use: 'Hero section vertical padding' },
+              ].map(step => (
+                <div key={step.name} className="spacing-row">
+                  <span className="spacing-name">{step.name}</span>
+                  <div className="spacing-bar-track">
+                    <div className="spacing-bar" style={{ width: `${Math.min(step.px * 1.8, 100)}%` }}></div>
+                  </div>
+                  <span className="spacing-value">{step.px}px</span>
+                  <span className="spacing-use">{step.use}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid-specs">
+              <article className="grid-spec-card story-card">
+                <h3>Digital Grid</h3>
+                <ul className="usage-list">
+                  <li><strong>Desktop:</strong> 12-column · 80px gutters · max-width 78rem</li>
+                  <li><strong>Tablet:</strong> 8-column · 40px gutters · breakpoint ≤ 1080px</li>
+                  <li><strong>Mobile:</strong> 4-column · 16px gutters · breakpoint ≤ 760px</li>
+                </ul>
+              </article>
+              <article className="grid-spec-card story-card">
+                <h3>Print Grid</h3>
+                <ul className="usage-list">
+                  <li><strong>A3 Poster:</strong> 6-column · 8mm gutters · 15mm margins</li>
+                  <li><strong>Banner / Tarpaulin:</strong> Logo zone left 25% · content zone right 75%</li>
+                  <li><strong>Stage backdrop:</strong> Center-safe zone 60% · bleed on all sides 10%</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── MOTION SYSTEM ─────────────────────────────────────────────── */}
+        <section id="motion" className="section section-motion reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Motion system</p>
+              <h2>Gentle, intentional, ceremonial.</h2>
+              <p className="section-lead">
+                Animation should feel like a cultural procession — purposeful and graceful, never abrupt or gratuitous. Hover each tier below to feel the difference in pace.
+              </p>
+            </div>
+
+            <div className="motion-grid">
+              {[
+                { name: 'Micro', value: '200ms', ease: 'ease', color: 'var(--primary)', use: 'Hover states, tooltip reveals, icon transitions' },
+                { name: 'Standard', value: '350ms', ease: 'cubic-bezier(0.4, 0, 0.2, 1)', color: 'var(--secondary)', use: 'Navigation, card state changes, colour transitions' },
+                { name: 'Hero', value: '700ms', ease: 'cubic-bezier(0.4, 0, 0.2, 1)', color: 'var(--tertiary)', use: 'Page entry reveals, section transitions, hero elements' },
+                { name: 'Ceremonial', value: '1200ms', ease: 'cubic-bezier(0.2, 0.8, 0.2, 1)', color: 'var(--primary)', use: 'Logo entrance, celebration moments, countdown reveals' },
+              ].map(tier => (
+                <article key={tier.name} className={`motion-card motion-card-${tier.name.toLowerCase()}`}>
+                  <div className="motion-demo-wrap" aria-hidden="true">
+                    <div className="motion-demo-track">
+                      <div className="motion-demo-dot" style={{ background: tier.color }}></div>
+                    </div>
+                  </div>
+                  <div className="motion-meta">
+                    <span className="asset-type">{tier.name}</span>
+                    <p className="motion-value">{tier.value}</p>
+                    <p className="motion-ease"><code>{tier.ease}</code></p>
+                    <p className="motion-use">{tier.use}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="guideline-grid">
+              <article className="guideline-card">
+                <h3>What should move</h3>
+                <p>Entry reveals, hover lifts, active states, toast notifications, navigation transitions, and logo appearance animations.</p>
+              </article>
+              <article className="guideline-card">
+                <h3>What stays still</h3>
+                <p>Body text blocks, data tables, color swatches, and utility elements. Motion is a reward, not a default.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── INTERACTIVE LAYERS ────────────────────────────────────────── */}
         <section id="experience" className="section section-experience reveal">
           <div className="container">
             <div className="section-intro">
@@ -350,150 +748,364 @@ export function App() {
           </div>
         </section>
 
+        {/* ── ACCESSIBILITY ─────────────────────────────────────────────── */}
+        <section id="accessibility" className="section section-accessibility reveal">
+          <div className="container">
+            <div className="section-intro">
+              <p className="section-kicker">Accessibility</p>
+              <h2>Inclusive design is non-negotiable.</h2>
+              <p className="section-lead">
+                All NCAF digital touchpoints must meet WCAG 2.1 AA as a minimum. The color pairs below have been verified — only these combinations are approved for body text and UI labels.
+              </p>
+            </div>
+
+            <div className="contrast-grid">
+              {[
+                { fg: '#383831', bg: '#FEFCF1', fgName: 'On-Surface', bgName: 'Woven Bone', ratio: '11.4:1', level: 'AAA' },
+                { fg: '#406E51', bg: '#FEFCF1', fgName: 'Heritage Green', bgName: 'Woven Bone', ratio: '5.9:1', level: 'AA' },
+                { fg: '#9C5000', bg: '#FEFCF1', fgName: 'Pagsaulog Orange', bgName: 'Woven Bone', ratio: '5.8:1', level: 'AA' },
+                { fg: '#834AAE', bg: '#FEFCF1', fgName: 'Royal Culture', bgName: 'Woven Bone', ratio: '5.9:1', level: 'AA' },
+                { fg: '#FFFFFF', bg: '#406E51', fgName: 'White', bgName: 'Heritage Green', ratio: '6.0:1', level: 'AA' },
+                { fg: '#FFFFFF', bg: '#9C5000', fgName: 'White', bgName: 'Pagsaulog Orange', ratio: '5.9:1', level: 'AA' },
+                { fg: '#FFFFFF', bg: '#834AAE', fgName: 'White', bgName: 'Royal Culture', ratio: '5.9:1', level: 'AA' },
+                { fg: '#FFFFFF', bg: '#383831', fgName: 'White', bgName: 'On-Surface', ratio: '12.6:1', level: 'AAA' },
+              ].map(pair => (
+                <article key={`${pair.fg}-${pair.bg}`} className="contrast-card" style={{ background: pair.bg }}>
+                  <p className="contrast-sample" style={{ color: pair.fg }}>Aa</p>
+                  <p className="contrast-pair-name" style={{ color: pair.fg }}>{pair.fgName}<br />on {pair.bgName}</p>
+                  <div className="contrast-badge-row">
+                    <span className="contrast-badge" style={{ color: pair.fg, borderColor: pair.fg }}>{pair.level}</span>
+                    <span className="contrast-ratio" style={{ color: pair.fg }}>{pair.ratio}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="guideline-grid">
+              <article className="guideline-card">
+                <h3>Focus States</h3>
+                <p>All interactive elements must have a visible focus ring. Use Royal Culture (#834AAE) at 2px solid with 2px offset — never remove the browser default without a branded replacement.</p>
+              </article>
+              <article className="guideline-card">
+                <h3>Reduced Motion</h3>
+                <p>All reveal animations respect <code>prefers-reduced-motion</code>. When the system preference is set, elements appear instantly without transitions. Never gate content behind animation.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── BRAND ASSETS ──────────────────────────────────────────────── */}
         <section id="brand-assets" className="section section-assets reveal">
           <div className="container">
             <div className="section-intro">
               <p className="section-kicker">Brand assets</p>
-              <h2> Rollout mockups & usage examples.</h2>
+              <h2>Rollout mockups &amp; usage examples.</h2>
               <p className="section-lead">
-                Each mockup demonstrates how the brand system translates into real-world formats—from social headers and countdown teasers to physical posters and stage banners.
+                Each mockup demonstrates how the brand system translates into real-world formats — from social headers and countdown teasers to print posters and stage banners.
               </p>
             </div>
 
             <div className="asset-grid">
+
+              {/* 1. Facebook Cover */}
               <article className="asset-card cover-photo reveal" style={{ animationDelay: '0.05s' }}>
                 <div className="asset-canvas landscape cover-photo-bg">
                   <div className="asset-texture"></div>
-                  <span className="asset-motif motif-bl">✦</span>
-                  <img src="/brand-logo.png" alt="" className="asset-logo mb-4" />
-                  <div className="asset-copy">
-                    <span className="glass-pill">Social Header</span>
-                    <h4>Celebrating the Riches of Our Roots</h4>
+                  <div className="cv-banig-overlay" aria-hidden="true"></div>
+                  <div className="cv-layout">
+                    <div className="cv-left">
+                      <img src="/logo-white-mono.svg" alt="" className="cv-logo" />
+                      <div className="cv-text">
+                        <p className="cv-eyebrow">2026 · Iloilo City</p>
+                        <h4 className="cv-headline">National Culture<br />&amp; Arts Festival</h4>
+                        <p className="cv-tagline">Celebrating the Riches of Our Roots</p>
+                      </div>
+                    </div>
+                    <div className="cv-right" aria-hidden="true">
+                      <div className="cv-orb"><div className="cv-orb-inner"></div></div>
+                      <span className="cv-floatmark">✦</span>
+                    </div>
+                  </div>
+                  <div className="cv-footer-bar">
+                    <span>March 2026</span>
+                    <span className="cv-dot">·</span>
+                    <span>Iloilo Convention Centre</span>
+                    <span className="cv-dot">·</span>
+                    <span>ncaf.gov.ph</span>
                   </div>
                   <span className="asset-format-tag" aria-label="1200 by 628 pixels">1200 × 628</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
                   <h3>Facebook Cover</h3>
-                  <p className="asset-note">Centered logo with high-contrast heritage green background.</p>
+                  <p className="asset-note">Heritage Green base with Banig weave overlay. Left-anchored layout maintains brand clarity at all thumbnail sizes.</p>
                 </div>
               </article>
 
+              {/* 2. Instagram Story Countdown */}
               <article className="asset-card countdown-card reveal" style={{ animationDelay: '0.12s' }}>
                 <div className="asset-canvas portrait countdown-bg">
                   <div className="asset-texture"></div>
-                  <span className="asset-motif motif-tr">♪</span>
-                  <span className="asset-motif motif-bl">✦</span>
-                  <div className="asset-copy countdown-copy">
-                    <span className="glass-pill">Teaser</span>
-                    <p className="countdown-number">12</p>
-                    <p className="asset-subcopy uppercase font-bold tracking-widest text-xs">Days to Pagsaulog</p>
+                  <div className="cdown-rings" aria-hidden="true">
+                    <div className="cdown-ring r1"></div>
+                    <div className="cdown-ring r2"></div>
+                    <div className="cdown-ring r3"></div>
+                  </div>
+                  <div className="canvas-inset-layout cdown-layout">
+                    <div className="cdown-top">
+                      <img src="/logo-white-mono.svg" alt="" className="cdown-logo" />
+                      <span className="cdown-brand">NCAF 2026</span>
+                    </div>
+                    <div className="cdown-center">
+                      <span className="cdown-pre-label">Days Until</span>
+                      <span className="cdown-big-number">12</span>
+                      <span className="cdown-festival">Pagsaulog<br />2026</span>
+                    </div>
+                    <div className="cdown-bottom">
+                      <span className="cdown-date-pill">March 2026 · Iloilo City</span>
+                    </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1080 by 1920 pixels">1080 × 1920</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
-                  <h3>Instagram Story</h3>
-                  <p className="asset-note">Vertical teaser using the ceremonial orange gradient.</p>
+                  <h3>Instagram Story Countdown</h3>
+                  <p className="asset-note">Ceremonial orange with concentric ring motifs. The display number anchors the composition as the centrepiece.</p>
                 </div>
               </article>
 
+              {/* 3. Announcement Card */}
               <article className="asset-card announcement-card reveal" style={{ animationDelay: '0.19s' }}>
                 <div className="asset-canvas portrait announcement-bg">
                   <div className="asset-texture"></div>
-                  <span className="asset-motif motif-tr">◆</span>
-                  <div className="asset-copy">
-                    <span className="glass-pill">Official</span>
-                    <h4>Artists announced this Friday.</h4>
-                    <p className="asset-subcopy text-sm opacity-80">Check the live feed at 10AM.</p>
+                  <div className="ann-vinta-overlay" aria-hidden="true"></div>
+                  <div className="canvas-inset-layout ann-layout">
+                    <div className="ann-top">
+                      <img src="/logo-white-mono.svg" alt="" className="ann-logo" />
+                      <span className="ann-eyebrow">Official Announcement</span>
+                    </div>
+                    <div className="ann-body">
+                      <h4 className="ann-headline">Artists &amp;<br />Performers<br />Revealed.</h4>
+                      <p className="ann-sub">Cultural achievers from across the archipelago converge in Iloilo.</p>
+                    </div>
+                    <div className="ann-footer-bar">
+                      <span className="ann-date">Friday · 10:00 AM</span>
+                      <span className="ann-cta-text">See Full List →</span>
+                    </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1080 by 1350 pixels">1080 × 1350</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
-                  <h3>Social Square</h3>
-                  <p className="asset-note">Announcement layout with editorial spacing.</p>
+                  <h3>Announcement Card</h3>
+                  <p className="asset-note">Royal Culture to Heritage Green diagonal. High-contrast white display type for feed impact with an editorial composition.</p>
                 </div>
               </article>
 
+              {/* 4. Keynote Slide */}
               <article className="asset-card presentation-card reveal" style={{ animationDelay: '0.26s' }}>
                 <div className="asset-canvas landscape presentation-bg">
-                  <div className="asset-texture"></div>
-                  <div className="p-4">
-                    <span className="text-brand-secondary font-bold tracking-widest text-xs uppercase">Vision Deck</span>
-                    <h4 className="text-brand-primary">Our Cultural Heritage</h4>
-                    <div className="w-12 h-1 bg-brand-secondary mt-4 rounded-full"></div>
+                  <div className="kn-grid-bg" aria-hidden="true"></div>
+                  <div className="kn-year-mark" aria-hidden="true">2026</div>
+                  <div className="kn-layout">
+                    <div className="kn-accent-bar"></div>
+                    <div className="kn-content">
+                      <img src="/brand-logo.png" alt="" className="kn-logo" />
+                      <div className="kn-text">
+                        <p className="kn-eyebrow">NCAF 2026 · Vision Deck</p>
+                        <h4 className="kn-title">Our Cultural<br />Heritage</h4>
+                        <div className="kn-rule"></div>
+                        <p className="kn-tagline">Celebrating the Riches of Our Roots</p>
+                      </div>
+                    </div>
                   </div>
                   <span className="asset-format-tag tag-dark" aria-label="1920 by 1080 pixels">1920 × 1080</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-presentation">Presentation</span>
-                  <h3>Keynote Slide</h3>
-                  <p className="asset-note">Clean, cream-toned layout for corporate and vision decks.</p>
+                  <h3>Keynote Title Slide</h3>
+                  <p className="asset-note">Woven Bone base with Heritage Green accent bar and light grid watermark. Premium editorial negative space throughout.</p>
                 </div>
               </article>
 
+              {/* 5. Event Poster */}
               <article className="asset-card poster-card reveal" style={{ animationDelay: '0.33s' }}>
                 <div className="asset-canvas portrait poster-bg">
-                  <div className="asset-texture"></div>
-                  <div className="poster-inner">
-                    <div>
-                      <img src="/brand-logo.png" alt="" className="asset-logo small" />
-                      <h4 className="mt-8 text-brand-primary">National Festival 2026</h4>
+                  <div className="poster-corner-tl" aria-hidden="true"></div>
+                  <div className="poster-corner-br" aria-hidden="true"></div>
+                  <div className="po-layout">
+                    <img src="/brand-logo.png" alt="" className="po-logo" />
+                    <div className="po-divider"></div>
+                    <h4 className="po-name">National<br />Culture &amp;<br />Arts Festival</h4>
+                    <span className="po-year">2026</span>
+                    <p className="po-quote">"Celebrating the Riches of Our Roots"</p>
+                    <div className="po-rule-thin"></div>
+                    <div className="po-info-row">
+                      <span>March 2026</span>
+                      <span>·</span>
+                      <span>Iloilo City</span>
                     </div>
-                    <ul className="poster-list text-xs uppercase font-bold tracking-widest mt-4">
-                      <li>Iloilo</li>
-                    </ul>
                   </div>
                   <span className="asset-format-tag tag-dark">A3 Print</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-print">Print</span>
                   <h3>Event Poster</h3>
-                  <p className="asset-note">Physical print mockup using the Woven Bone base.</p>
+                  <p className="asset-note">Bone base with Heritage Green corner bracket accents and a layered typographic hierarchy. Print-safe at 300 DPI on A3.</p>
                 </div>
               </article>
 
+              {/* 6. Portrait Pubmat */}
               <article className="asset-card story-card-social reveal" style={{ animationDelay: '0.40s' }}>
                 <div className="asset-canvas portrait spotlight-bg">
                   <div className="asset-texture"></div>
-                  <div className="spotlight-content">
-                    <div className="spotlight-badge">Artist Spotlight</div>
-                    <h4 className="text-white spotlight-name">Maria Makiling</h4>
-                    <p className="asset-subcopy text-sm text-white/80">A journey through indigenous weaving.</p>
+                  <div className="sp-beams" aria-hidden="true">
+                    <div className="sp-beam beam-purple"></div>
+                    <div className="sp-beam beam-orange"></div>
+                    <div className="sp-beam beam-green"></div>
+                  </div>
+                  <div className="sp-silhouette" aria-hidden="true"></div>
+                  <div className="canvas-inset-layout sp-layout">
+                    <div className="sp-top-row">
+                      <span className="sp-badge">Artist Spotlight</span>
+                      <img src="/brand-logo.png" alt="" className="sp-logo" />
+                    </div>
+                    <div className="sp-info-card">
+                      <p className="sp-eyebrow">Featured Performer</p>
+                      <h4 className="sp-name">Maria<br />Makiling</h4>
+                      <p className="sp-discipline">Traditional Weaving · Indigenous Art</p>
+                      <div className="sp-tags">
+                        <span>T'nalak Weaver</span>
+                        <span>Palawan</span>
+                      </div>
+                      <div className="sp-event-row">NCAF 2026 · March · Iloilo</div>
+                    </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1080 by 1350 pixels">1080 × 1350</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
                   <h3>Portrait Pubmat</h3>
-                  <p className="asset-note">High-impact artist reveal with ceremonial purple.</p>
+                  <p className="asset-note">Stage-dark base with tri-color lighting echoing the full brand palette. Frosted glass info card at bottom for immediate legibility.</p>
                 </div>
               </article>
 
+              {/* 7. Street Banner */}
               <article className="asset-card tarp-card reveal" style={{ animationDelay: '0.47s' }}>
                 <div className="asset-canvas tarp landscape tarp-bg">
                   <div className="asset-texture"></div>
-                  <div className="flex items-center gap-8 z-10 px-8">
-                    <img src="/brand-logo.png" alt="" className="asset-logo" />
-                    <div className="h-16 w-px bg-white/20"></div>
-                    <h4 className="max-w-[12ch] text-white">Celebrating the Riches of Our Roots</h4>
-                  </div>
-                  <div className="z-10 px-8 text-right text-white">
-                    <p className="font-bold tracking-widest uppercase text-sm">March 2026</p>
+                  <div className="tarp-stripe-overlay" aria-hidden="true"></div>
+                  <div className="tp-layout">
+                    <div className="tp-logo-zone">
+                      <img src="/logo-white-mono.svg" alt="" className="tp-logo" />
+                    </div>
+                    <div className="tp-divider" aria-hidden="true"></div>
+                    <div className="tp-center-zone">
+                      <p className="tp-eyebrow">NCAF 2026</p>
+                      <h4 className="tp-headline">Celebrating the<br />Riches of Our Roots</h4>
+                      <p className="tp-sub">National Culture &amp; Arts Festival</p>
+                    </div>
+                    <div className="tp-right-zone">
+                      <span className="tp-month">March</span>
+                      <span className="tp-year">2026</span>
+                      <span className="tp-venue">Iloilo City</span>
+                    </div>
                   </div>
                   <span className="asset-format-tag">10ft × 3ft</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-print">Print</span>
                   <h3>Street Banner</h3>
-                  <p className="asset-note">Horizontal large-format asset for street rollout and stage banners.</p>
+                  <p className="asset-note">Heritage Green to Pagsaulog Orange gradient with Vinta stripe overlay — designed for outdoor rollout, stage backwalls, and venue entry points.</p>
                 </div>
               </article>
+
+              {/* 8. Email Template */}
+              <article className="asset-card email-card reveal" style={{ animationDelay: '0.54s' }}>
+                <div className="asset-canvas portrait email-bg">
+                  <div className="em-chrome" aria-hidden="true">
+                    <div className="em-chrome-dots">
+                      <span></span><span></span><span></span>
+                    </div>
+                  </div>
+                  <div className="em-wrapper">
+                    <div className="em-header">
+                      <img src="/logo-white-mono.svg" alt="" className="em-logo" />
+                      <span className="em-header-tag">NCAF 2026</span>
+                    </div>
+                    <div className="em-content">
+                      <p className="em-subject">You're Invited to NCAF 2026</p>
+                      <div className="em-lines">
+                        <div className="em-line wide"></div>
+                        <div className="em-line medium"></div>
+                        <div className="em-line medium"></div>
+                        <div className="em-line short"></div>
+                      </div>
+                      <div className="em-cta">Open Invitation</div>
+                    </div>
+                    <div className="em-footer">
+                      <p className="em-footer-text">National Culture &amp; Arts Festival · Iloilo 2026</p>
+                    </div>
+                  </div>
+                  <span className="asset-format-tag tag-dark">600px email</span>
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-digital">Digital</span>
+                  <h3>Email Template</h3>
+                  <p className="asset-note">Invitation and announcement layout following 600px email-safe constraints. Heritage Green header for instant brand recognition.</p>
+                </div>
+              </article>
+
+              {/* 9. Video Lower-Third */}
+              <article className="asset-card lowerthird-card reveal" style={{ animationDelay: '0.61s' }}>
+                <div className="asset-canvas landscape lowerthird-bg">
+                  <div className="lt-scene" aria-hidden="true"></div>
+                  <div className="lt-card">
+                    <div className="lt-orange-bar"></div>
+                    <div className="lt-text-zone">
+                      <span className="lt-name-display">The Hiligaynon Weavers</span>
+                      <span className="lt-role-display">Cultural Heritage Showcase · NCAF 2026</span>
+                    </div>
+                    <div className="lt-logo-zone">
+                      <img src="/brand-logo.png" alt="" className="lt-brand-logo" />
+                    </div>
+                  </div>
+                  <span className="asset-format-tag">1920 × 1080</span>
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-video">Video</span>
+                  <h3>Video Lower-Third</h3>
+                  <p className="asset-note">Glass-frosted name card for livestreams, documentation reels, and interview segments. Orange accent bar ties back to the brand palette.</p>
+                </div>
+              </article>
+
+              {/* 10. Festival Shirt */}
+              <article className="asset-card merch-card reveal" style={{ animationDelay: '0.68s' }}>
+                <div className="asset-canvas portrait merch-bg">
+                  <div className="mc-weave-bg" aria-hidden="true"></div>
+                  <div className="mc-layout">
+                    <p className="mc-collection-label">Festival Collection</p>
+                    <div className="mc-print-card">
+                      <img src="/brand-logo.png" alt="" className="mc-logo" />
+                      <p className="mc-tagline">NCAF 2026 · ILOILO</p>
+                      <div className="mc-tagline-sub">Celebrating the Riches<br />of Our Roots</div>
+                    </div>
+                    <p className="mc-specs">Crew Neck · Bone White · 100% Cotton</p>
+                  </div>
+                  <span className="asset-format-tag tag-dark">Merchandise</span>
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-print">Print</span>
+                  <h3>Festival Shirt</h3>
+                  <p className="asset-note">Official festival garment. Logo and tagline on Woven Bone base — minimal, premium, and culturally rooted.</p>
+                </div>
+              </article>
+
             </div>
           </div>
         </section>
 
+        {/* ── DO'S & DON'TS ─────────────────────────────────────────────── */}
         <section id="dos-donts" className="section section-rules reveal">
           <div className="container">
             <div className="section-intro">
@@ -535,7 +1147,7 @@ export function App() {
       <footer className="site-footer">
         <div className="container">
           <div className="footer-inner">
-            <p>&copy; 2026 NCAF Creative Team. All cultural rights reserved.</p>
+            <p>&copy; 2026 West Visayas State University, CICT Creatives Team. All cultural rights reserved.</p>
             <nav>
               <a href="https://github.com" target="_blank" rel="noopener noreferrer">Source archive</a>
             </nav>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="T'nalak Memory overlay — transparent background for use on coloured surfaces">
+  <defs>
+    <!-- Primary 135° interlocking diagonal bands -->
+    <pattern id="tm-a" width="30" height="30" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect x="0"  width="6"  height="30" fill="white" fill-opacity="0.20"/>
+      <rect x="6"  width="6"  height="30" fill="white" fill-opacity="0.03"/>
+      <rect x="12" width="6"  height="30" fill="white" fill-opacity="0.13"/>
+      <rect x="18" width="6"  height="30" fill="white" fill-opacity="0.14"/>
+      <rect x="24" width="6"  height="30" fill="white" fill-opacity="0.04"/>
+    </pattern>
+    <!-- Secondary -45° crossing thread -->
+    <pattern id="tm-b" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect x="0"  width="10" height="20" fill="white" fill-opacity="0.07"/>
+      <rect x="10" width="10" height="20" fill="white" fill-opacity="0.02"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#tm-a)"/>
+  <rect width="1200" height="1200" fill="url(#tm-b)"/>
+</svg>

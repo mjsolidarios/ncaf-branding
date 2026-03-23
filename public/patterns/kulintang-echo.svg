@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Kulintang Echo pattern">
+  <defs>
+    <pattern id="kulintang" width="96" height="96" patternUnits="userSpaceOnUse">
+      <rect width="96" height="96" fill="#FEFCF1"/>
+      <circle cx="48" cy="48" r="10" fill="#834AAE" fill-opacity="0.30"/>
+      <circle cx="48" cy="48" r="22" fill="none" stroke="#406E51" stroke-opacity="0.26" stroke-width="6"/>
+      <circle cx="48" cy="48" r="34" fill="none" stroke="#9C5000" stroke-opacity="0.22" stroke-width="6"/>
+      <circle cx="48" cy="48" r="46" fill="none" stroke="#834AAE" stroke-opacity="0.16" stroke-width="4"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#kulintang)"/>
+</svg>

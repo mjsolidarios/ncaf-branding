@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Banig Weave overlay — transparent background for use on coloured surfaces">
+  <defs>
+    <!-- Primary cross-thread bands at 45° -->
+    <pattern id="bw-a" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect x="0"  width="8"  height="32" fill="white" fill-opacity="0.18"/>
+      <rect x="8"  width="8"  height="32" fill="white" fill-opacity="0.06"/>
+      <rect x="16" width="8"  height="32" fill="white" fill-opacity="0.13"/>
+      <rect x="24" width="8"  height="32" fill="white" fill-opacity="0.04"/>
+    </pattern>
+    <!-- Secondary cross-thread bands at -45° -->
+    <pattern id="bw-b" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect x="0"  width="8"  height="24" fill="white" fill-opacity="0.09"/>
+      <rect x="8"  width="8"  height="24" fill="white" fill-opacity="0.02"/>
+      <rect x="16" width="8"  height="24" fill="white" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <!-- Transparent base — no background rect -->
+  <rect width="1200" height="1200" fill="url(#bw-a)"/>
+  <rect width="1200" height="1200" fill="url(#bw-b)"/>
+</svg>

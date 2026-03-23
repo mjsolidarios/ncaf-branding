@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Loom Pathways pattern">
+  <defs>
+    <pattern id="loom" width="88" height="88" patternUnits="userSpaceOnUse">
+      <rect width="88" height="88" fill="#FEFCF1"/>
+      <rect width="12" height="88" fill="#406E51" fill-opacity="0.28"/>
+      <rect x="12" width="10" height="88" fill="#406E51" fill-opacity="0.08"/>
+      <rect x="22" width="12" height="88" fill="#9C5000" fill-opacity="0.22"/>
+      <rect x="34" width="10" height="88" fill="#834AAE" fill-opacity="0.18"/>
+      <rect y="0" width="88" height="10" fill="#FFFFFF" fill-opacity="0.34"/>
+      <rect y="22" width="88" height="10" fill="#FFFFFF" fill-opacity="0.18"/>
+      <rect y="44" width="88" height="10" fill="#FFFFFF" fill-opacity="0.12"/>
+      <rect y="66" width="88" height="10" fill="#FFFFFF" fill-opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#loom)"/>
+</svg>

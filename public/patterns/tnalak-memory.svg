@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="T'nalak Memory pattern">
+  <defs>
+    <pattern id="tnalak" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="#F8F3E8"/>
+      <path d="M0 30L30 0L60 30L30 60Z" fill="#383831" fill-opacity="0.14"/>
+      <path d="M30 0L60 30" stroke="#9C5000" stroke-opacity="0.35" stroke-width="3"/>
+      <path d="M0 30L30 60" stroke="#834AAE" stroke-opacity="0.30" stroke-width="3"/>
+      <path d="M0 0L60 60M60 0L0 60" stroke="#406E51" stroke-opacity="0.16" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#tnalak)"/>
+</svg>
