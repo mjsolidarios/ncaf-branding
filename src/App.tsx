@@ -149,11 +149,11 @@ export function App() {
         <div className="container nav-inner">
           <a href="#top" className="nav-brand" onClick={(e) => scrollToSection(e, 'top')}>NCAF 2026</a>
           <button
-            className="nav-toggle"
+            className={`nav-toggle ${isNavOpen ? 'is-open' : ''}`}
             type="button"
             aria-expanded={isNavOpen}
             aria-controls="primary-nav"
-            aria-label="Toggle navigation"
+            aria-label={isNavOpen ? 'Close navigation' : 'Open navigation'}
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
             <span className="nav-toggle-icon"></span>
@@ -226,10 +226,31 @@ export function App() {
 
             <div className="color-palette">
               {[
-                { name: 'Heritage Green', hex: '#406E51', label: 'Primary' },
-                { name: 'Pagsaulog Orange', hex: '#9C5000', label: 'Secondary' },
-                { name: 'Royal Archive', hex: '#834AAE', label: 'Tertiary' },
-                { name: 'Woven Bone', hex: '#FEFCF1', label: 'Surface', light: true },
+                {
+                  name: 'Heritage Green',
+                  hex: '#406E51',
+                  label: 'Primary',
+                  meaning: 'Represents rooted identity, stewardship, and the living continuity of tradition.'
+                },
+                {
+                  name: 'Pagsaulog Orange',
+                  hex: '#9C5000',
+                  label: 'Secondary',
+                  meaning: 'Carries festive warmth, collective joy, and the energy of community celebration.'
+                },
+                {
+                  name: 'Royal Culture',
+                  hex: '#834AAE',
+                  label: 'Tertiary',
+                  meaning: 'Signals cultural prestige, creative depth, and the ceremonial spirit of the festival.'
+                },
+                {
+                  name: 'Woven Bone',
+                  hex: '#FEFCF1',
+                  label: 'Surface',
+                  light: true,
+                  meaning: 'Provides a calm, archival backdrop inspired by woven fibers, paper, and heritage crafts.'
+                },
               ].map((color) => (
                 <article className="color-card" key={color.hex}>
                   <div className={`color-swatch ${color.light ? 'light-swatch' : ''}`} style={{ backgroundColor: color.hex }}></div>
@@ -243,6 +264,7 @@ export function App() {
                     >
                       {color.hex}
                     </button>
+                    <p className="color-meaning">{color.meaning}</p>
                   </div>
                 </article>
               ))}
@@ -420,9 +442,7 @@ export function App() {
                       <h4 className="mt-8 text-brand-primary">National Festival 2026</h4>
                     </div>
                     <ul className="poster-list text-xs uppercase font-bold tracking-widest mt-4">
-                      <li>Manila</li>
-                      <li>Cebu</li>
-                      <li>Davao</li>
+                      <li>Iloilo</li>
                     </ul>
                   </div>
                   <span className="asset-format-tag tag-dark">A3 Print</span>
