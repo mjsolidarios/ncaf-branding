@@ -357,74 +357,88 @@ export function App() {
             <div className="section-intro">
               <p className="section-kicker">Brand assets</p>
               <h2> Rollout mockups & usage examples.</h2>
+              <p className="section-lead">
+                Each mockup demonstrates how the brand system translates into real-world formats—from social headers and countdown teasers to physical posters and stage banners.
+              </p>
             </div>
 
             <div className="asset-grid">
-              <article className="asset-card cover-photo">
+              <article className="asset-card cover-photo reveal" style={{ animationDelay: '0.05s' }}>
                 <div className="asset-canvas landscape cover-photo-bg">
                   <div className="asset-texture"></div>
+                  <span className="asset-motif motif-bl">✦</span>
                   <img src="/brand-logo.png" alt="" className="asset-logo mb-4" />
                   <div className="asset-copy">
                     <span className="glass-pill">Social Header</span>
                     <h4>The Living Archive</h4>
                   </div>
+                  <span className="asset-format-tag">1200 × 628</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-social">Social</span>
                   <h3>Facebook Cover</h3>
                   <p className="asset-note">Centered logo with high-contrast heritage green background.</p>
                 </div>
               </article>
 
-              <article className="asset-card countdown-card">
+              <article className="asset-card countdown-card reveal" style={{ animationDelay: '0.12s' }}>
                 <div className="asset-canvas portrait countdown-bg">
                   <div className="asset-texture"></div>
                   <span className="asset-motif motif-tr">♪</span>
-                  <div className="asset-copy">
+                  <span className="asset-motif motif-bl">✦</span>
+                  <div className="asset-copy countdown-copy">
                     <span className="glass-pill">Teaser</span>
                     <p className="countdown-number">12</p>
                     <p className="asset-subcopy uppercase font-bold tracking-widest text-xs">Days to Pagsaulog</p>
                   </div>
+                  <span className="asset-format-tag">1080 × 1920</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-social">Social</span>
                   <h3>Instagram Story</h3>
                   <p className="asset-note">Vertical teaser using the ceremonial orange gradient.</p>
                 </div>
               </article>
 
-              <article className="asset-card announcement-card">
+              <article className="asset-card announcement-card reveal" style={{ animationDelay: '0.19s' }}>
                 <div className="asset-canvas portrait announcement-bg">
                   <div className="asset-texture"></div>
+                  <span className="asset-motif motif-tr">◆</span>
                   <div className="asset-copy">
                     <span className="glass-pill">Official</span>
                     <h4>Artists announced this Friday.</h4>
                     <p className="asset-subcopy text-sm opacity-80">Check the live feed at 10AM.</p>
                   </div>
+                  <span className="asset-format-tag">1080 × 1350</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-social">Social</span>
                   <h3>Social Square</h3>
                   <p className="asset-note">Announcement layout with editorial spacing.</p>
                 </div>
               </article>
 
-              <article className="asset-card presentation-card">
+              <article className="asset-card presentation-card reveal" style={{ animationDelay: '0.26s' }}>
                 <div className="asset-canvas landscape presentation-bg">
                   <div className="asset-texture"></div>
                   <div className="p-4">
                     <span className="text-brand-secondary font-bold tracking-widest text-xs uppercase">Vision Deck</span>
                     <h4 className="text-brand-primary">Our Cultural Heritage</h4>
-                    <div className="w-12 h-1 bg-brand-secondary mt-4"></div>
+                    <div className="w-12 h-1 bg-brand-secondary mt-4 rounded-full"></div>
                   </div>
+                  <span className="asset-format-tag tag-dark">1920 × 1080</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-presentation">Presentation</span>
                   <h3>Keynote Slide</h3>
                   <p className="asset-note">Clean, cream-toned layout for corporate and vision decks.</p>
                 </div>
               </article>
 
-              <article className="asset-card poster-card">
+              <article className="asset-card poster-card reveal" style={{ animationDelay: '0.33s' }}>
                 <div className="asset-canvas portrait poster-bg">
                   <div className="asset-texture"></div>
-                  <div className="p-6 border-2 border-brand-primary/10 h-full flex flex-col justify-between">
+                  <div className="poster-inner">
                     <div>
                       <img src="/brand-logo.png" alt="" className="asset-logo small" />
                       <h4 className="mt-8 text-brand-primary">National Festival 2026</h4>
@@ -435,27 +449,33 @@ export function App() {
                       <li>Davao</li>
                     </ul>
                   </div>
+                  <span className="asset-format-tag tag-dark">A3 Print</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-print">Print</span>
                   <h3>Event Poster</h3>
                   <p className="asset-note">Physical print mockup using the Woven Bone base.</p>
                 </div>
               </article>
 
-              <article className="asset-card story-card-social">
+              <article className="asset-card story-card-social reveal" style={{ animationDelay: '0.40s' }}>
                 <div className="asset-canvas portrait spotlight-bg">
                   <div className="asset-texture"></div>
-                  <div className="spotlight-badge text-[10px] uppercase font-bold tracking-widest text-white">Artist Spotlight</div>
-                  <h4 className="text-white">Maria Makiling</h4>
-                  <p className="asset-subcopy text-xs text-white/80">A journey through indigenous weaving.</p>
+                  <div className="spotlight-content">
+                    <div className="spotlight-badge">Artist Spotlight</div>
+                    <h4 className="text-white spotlight-name">Maria Makiling</h4>
+                    <p className="asset-subcopy text-sm text-white/80">A journey through indigenous weaving.</p>
+                  </div>
+                  <span className="asset-format-tag">1080 × 1350</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-social">Social</span>
                   <h3>Portrait Pubmat</h3>
                   <p className="asset-note">High-impact artist reveal with ceremonial purple.</p>
                 </div>
               </article>
 
-              <article className="asset-card tarp-card">
+              <article className="asset-card tarp-card reveal" style={{ animationDelay: '0.47s' }}>
                 <div className="asset-canvas tarp landscape tarp-bg">
                   <div className="asset-texture"></div>
                   <div className="flex items-center gap-8 z-10 px-8">
@@ -466,8 +486,10 @@ export function App() {
                   <div className="z-10 px-8 text-right text-white">
                     <p className="font-bold tracking-widest uppercase text-sm">March 2026</p>
                   </div>
+                  <span className="asset-format-tag">10ft × 3ft</span>
                 </div>
                 <div className="asset-meta">
+                  <span className="asset-category category-print">Print</span>
                   <h3>Street Banner</h3>
                   <p className="asset-note">Horizontal large-format asset for street rollout and stage banners.</p>
                 </div>
