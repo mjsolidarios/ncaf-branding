@@ -253,7 +253,7 @@ export function App() {
                     { bg: '#F7F2E7', label: 'Surface Low', dark: true },
                   ].map(surf => (
                     <div key={surf.bg} className={`logo-bg-swatch ${surf.dark ? 'swatch-dark-label' : 'swatch-light-label'}`} style={{ background: surf.bg }}>
-                      <img src="/brand-logo.png" alt="" className={`bg-swatch-logo ${surf.dark ? '' : 'invert-logo'}`} />
+                      <img src={surf.dark ? '/brand-logo.png' : '/logo-white-mono.svg'} alt="" className={`bg-swatch-logo ${surf.dark ? '' : 'invert-logo'}`} />
                       <span className="bg-label">{surf.label}</span>
                       <span className="bg-approved-tag" aria-label="approved">✓</span>
                     </div>
@@ -367,8 +367,8 @@ export function App() {
                   <h3>Woven Rhythm</h3>
                   <p className="asset-note">Cross-thread geometry inspired by handwoven mats. Best for hero backgrounds and presentation covers.</p>
                   <div className="pattern-download-group">
-                    <a className="pattern-download" href="/patterns/banig-weave.svg" download>Download SVG</a>
-                    <a className="pattern-download pattern-download-overlay" href="/patterns/banig-weave-overlay.svg" download>Download Overlay</a>
+                    <a className="pattern-download" href="/patterns/banig-weave.svg" download>SVG Pattern</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/banig-weave-overlay.svg" download>SVG Overlay</a>
                   </div>
                 </div>
               </article>
@@ -380,8 +380,8 @@ export function App() {
                   <h3>Festival Pulse</h3>
                   <p className="asset-note">Repeating arcs that mimic percussion resonance. Ideal for countdown cards and story templates.</p>
                   <div className="pattern-download-group">
-                    <a className="pattern-download" href="/patterns/kulintang-echo.svg" download>Download SVG</a>
-                    <a className="pattern-download pattern-download-overlay" href="/patterns/kulintang-echo-overlay.svg" download>Download Overlay</a>
+                    <a className="pattern-download" href="/patterns/kulintang-echo.svg" download>SVG Pattern</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/kulintang-echo-overlay.svg" download>SVG Overlay</a>
                   </div>
                 </div>
               </article>
@@ -393,8 +393,8 @@ export function App() {
                   <h3>Processional Stripes</h3>
                   <p className="asset-note">Layered directional bands suggesting movement and celebration. Works well in banner and tarp mockups.</p>
                   <div className="pattern-download-group">
-                    <a className="pattern-download" href="/patterns/vinta-sails.svg" download>Download SVG</a>
-                    <a className="pattern-download pattern-download-overlay" href="/patterns/vinta-sails-overlay.svg" download>Download Overlay</a>
+                    <a className="pattern-download" href="/patterns/vinta-sails.svg" download>SVG Pattern</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/vinta-sails-overlay.svg" download>SVG Overlay</a>
                   </div>
                 </div>
               </article>
@@ -406,8 +406,8 @@ export function App() {
                   <h3>T'nalak Memory</h3>
                   <p className="asset-note">Interlocking diagonals inspired by sacred cloth rhythm. Use for hero overlays and ceremonial title cards.</p>
                   <div className="pattern-download-group">
-                    <a className="pattern-download" href="/patterns/tnalak-memory.svg" download>Download SVG</a>
-                    <a className="pattern-download pattern-download-overlay" href="/patterns/tnalak-memory-overlay.svg" download>Download Overlay</a>
+                    <a className="pattern-download" href="/patterns/tnalak-memory.svg" download>SVG Pattern</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/tnalak-memory-overlay.svg" download>SVG Overlay</a>
                   </div>
                 </div>
               </article>
@@ -419,8 +419,8 @@ export function App() {
                   <h3>Loom Pathways</h3>
                   <p className="asset-note">Layered stripe pathways echoing hand-guided loom movement. Great for section dividers and carousel backgrounds.</p>
                   <div className="pattern-download-group">
-                    <a className="pattern-download" href="/patterns/loom-pathways.svg" download>Download SVG</a>
-                    <a className="pattern-download pattern-download-overlay" href="/patterns/loom-pathways-overlay.svg" download>Download Overlay</a>
+                    <a className="pattern-download" href="/patterns/loom-pathways.svg" download>SVG Pattern</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/loom-pathways-overlay.svg" download>SVG Overlay</a>
                   </div>
                 </div>
               </article>
@@ -432,8 +432,8 @@ export function App() {
                   <h3>Dream Step Motif</h3>
                   <p className="asset-note">Stepped geometric repetition with soft color cadence. Ideal for poster borders and lower-third accents.</p>
                   <div className="pattern-download-group">
-                    <a className="pattern-download" href="/patterns/dream-step-motif.svg" download>Download SVG</a>
-                    <a className="pattern-download pattern-download-overlay" href="/patterns/dream-step-motif-overlay.svg" download>Download Overlay</a>
+                    <a className="pattern-download" href="/patterns/dream-step-motif.svg" download>SVG Pattern</a>
+                    <a className="pattern-download pattern-download-overlay" href="/patterns/dream-step-motif-overlay.svg" download>SVG Overlay</a>
                   </div>
                 </div>
               </article>
@@ -807,7 +807,7 @@ export function App() {
 
             <div className="asset-grid">
 
-              {/* 1. Facebook Cover */}
+              {/* 1. Facebook */}
               <article className="asset-card cover-photo reveal" style={{ animationDelay: '0.05s' }}>
                 <div className="asset-canvas landscape cover-photo-bg">
                   <div className="asset-texture"></div>
@@ -829,15 +829,15 @@ export function App() {
                   <div className="cv-footer-bar">
                     <span>March 2026</span>
                     <span className="cv-dot">·</span>
-                    <span>Iloilo Convention Centre</span>
+                    <span>West Visayas State University</span>
                     <span className="cv-dot">·</span>
-                    <span>ncaf.gov.ph</span>
+                    <span>PASUC</span>
                   </div>
                   <span className="asset-format-tag" aria-label="1200 by 628 pixels">1200 × 628</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
-                  <h3>Facebook Cover</h3>
+                  <h3>Facebook</h3>
                   <p className="asset-note">Heritage Green base with Banig weave overlay. Left-anchored layout maintains brand clarity at all thumbnail sizes.</p>
                 </div>
               </article>
@@ -968,7 +968,7 @@ export function App() {
                   <div className="canvas-inset-layout sp-layout">
                     <div className="sp-top-row">
                       <span className="sp-badge">Artist Spotlight</span>
-                      <img src="/brand-logo.png" alt="" className="sp-logo" />
+                      <img src="/logo-white-mono.svg" alt="" className="sp-logo" />
                     </div>
                     <div className="sp-info-card">
                       <p className="sp-eyebrow">Featured Performer</p>
@@ -1067,7 +1067,7 @@ export function App() {
                       <span className="lt-role-display">Cultural Heritage Showcase · NCAF 2026</span>
                     </div>
                     <div className="lt-logo-zone">
-                      <img src="/brand-logo.png" alt="" className="lt-brand-logo" />
+                      <img src="/logo-white-mono.svg" alt="" className="lt-brand-logo" />
                     </div>
                   </div>
                   <span className="asset-format-tag">1920 × 1080</span>
