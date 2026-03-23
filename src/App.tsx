@@ -7,6 +7,11 @@ export function App() {
   const [activeSection, setActiveSection] = useState('top');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimeoutRef = useRef<number | null>(null);
+  const partnerLogos = [
+    { src: '/city-iloilo-logo.png', alt: 'City of Iloilo logo', label: 'Iloilo City' },
+    { src: '/pasuc-logo.png', alt: 'PASUC logo', label: 'PASUC' },
+    { src: '/wvsu-logo.png', alt: 'West Visayas State University logo', label: 'WVSU' },
+  ];
 
   useEffect(() => {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -806,6 +811,18 @@ export function App() {
             </div>
 
             <div className="asset-grid">
+              {/* 0. Facebook Cover Photo*/}
+              <article className="asset-card fb-cover-photo-card reveal" style={{ animationDelay: '0.05s' }}>
+                <div className="fb-cover-photo-canvas">
+                  <img src="/facebook-cover-photo.png" alt="Facebook cover photo mockup" className="fb-cover-photo-img" />
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-social">Social</span>
+                  <h3>Facebook Cover Photo</h3>
+                  <p className="asset-note">Official Facebook cover photo at 1200 × 628 px.</p>
+                </div>
+              </article>
+
 
               {/* 1. Facebook */}
               <article className="asset-card cover-photo reveal" style={{ animationDelay: '0.05s' }}>
@@ -829,9 +846,14 @@ export function App() {
                   <div className="cv-footer-bar">
                     <span>March 2026</span>
                     <span className="cv-dot">·</span>
-                    <span>West Visayas State University</span>
-                    <span className="cv-dot">·</span>
-                    <span>PASUC</span>
+                    <div className="partner-lockup partner-lockup-light partner-lockup-labels cv-partner-lockup" aria-label="Event partners">
+                      {partnerLogos.map((partner) => (
+                        <div key={`cover-${partner.label}`} className="partner-lockup-item">
+                          <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                          <span>{partner.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1200 by 628 pixels">1200 × 628</span>
                 </div>
@@ -863,6 +885,13 @@ export function App() {
                     </div>
                     <div className="cdown-bottom">
                       <span className="cdown-date-pill">March 2026 · Iloilo City</span>
+                      <div className="partner-lockup partner-lockup-light partner-lockup-icons cdown-partner-lockup" aria-label="Event partners">
+                        {partnerLogos.map((partner) => (
+                          <div key={`countdown-${partner.label}`} className="partner-lockup-item">
+                            <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1080 by 1920 pixels">1080 × 1920</span>
@@ -890,7 +919,16 @@ export function App() {
                     </div>
                     <div className="ann-footer-bar">
                       <span className="ann-date">Friday · 10:00 AM</span>
-                      <span className="ann-cta-text">See Full List →</span>
+                      <div className="ann-footer-meta">
+                        <div className="partner-lockup partner-lockup-light partner-lockup-icons ann-partner-lockup" aria-label="Event partners">
+                          {partnerLogos.map((partner) => (
+                            <div key={`announcement-${partner.label}`} className="partner-lockup-item">
+                              <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                            </div>
+                          ))}
+                        </div>
+                        <span className="ann-cta-text">See Full List →</span>
+                      </div>
                     </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1080 by 1350 pixels">1080 × 1350</span>
@@ -917,6 +955,14 @@ export function App() {
                         <div className="kn-rule"></div>
                         <p className="kn-tagline">Celebrating the Riches of Our Roots</p>
                       </div>
+                      <div className="partner-lockup partner-lockup-dark partner-lockup-labels kn-partner-lockup" aria-label="Event partners">
+                        {partnerLogos.map((partner) => (
+                          <div key={`keynote-${partner.label}`} className="partner-lockup-item">
+                            <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                            <span>{partner.label}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <span className="asset-format-tag tag-dark" aria-label="1920 by 1080 pixels">1920 × 1080</span>
@@ -940,6 +986,13 @@ export function App() {
                     <span className="po-year">2026</span>
                     <p className="po-quote">"Celebrating the Riches of Our Roots"</p>
                     <div className="po-rule-thin"></div>
+                    <div className="partner-lockup partner-lockup-dark partner-lockup-icons po-partner-lockup" aria-label="Event partners">
+                      {partnerLogos.map((partner) => (
+                        <div key={`poster-${partner.label}`} className="partner-lockup-item">
+                          <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                        </div>
+                      ))}
+                    </div>
                     <div className="po-info-row">
                       <span>March 2026</span>
                       <span>·</span>
@@ -1004,6 +1057,14 @@ export function App() {
                       <p className="tp-eyebrow">NCAF 2026</p>
                       <h4 className="tp-headline">Celebrating the<br />Riches of Our Roots</h4>
                       <p className="tp-sub">National Culture &amp; Arts Festival</p>
+                      <div className="partner-lockup partner-lockup-light partner-lockup-labels tp-partner-lockup" aria-label="Event partners">
+                        {partnerLogos.map((partner) => (
+                          <div key={`tarp-${partner.label}`} className="partner-lockup-item">
+                            <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                            <span>{partner.label}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     <div className="tp-right-zone">
                       <span className="tp-month">March</span>
@@ -1044,6 +1105,13 @@ export function App() {
                       <div className="em-cta">Open Invitation</div>
                     </div>
                     <div className="em-footer">
+                      <div className="partner-lockup partner-lockup-dark partner-lockup-icons em-partner-lockup" aria-label="Event partners">
+                        {partnerLogos.map((partner) => (
+                          <div key={`email-${partner.label}`} className="partner-lockup-item">
+                            <img src={partner.src} alt={partner.alt} className="partner-lockup-logo" />
+                          </div>
+                        ))}
+                      </div>
                       <p className="em-footer-text">National Culture &amp; Arts Festival · Iloilo 2026</p>
                     </div>
                   </div>
