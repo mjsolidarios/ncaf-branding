@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from "@/components/ui/button"
 import './App.css'
 
@@ -14,20 +16,34 @@ export function App() {
   ];
 
   useEffect(() => {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -8% 0px'
-    });
+    gsap.registerPlugin(ScrollTrigger);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const revealItems = document.querySelectorAll('.reveal');
-    revealItems.forEach((item) => revealObserver.observe(item));
+    const revealItems = gsap.utils.toArray<HTMLElement>('.reveal');
+    let revealContext: gsap.Context | null = null;
+
+    if (!prefersReducedMotion) {
+      revealItems.forEach((item) => item.classList.add('reveal-ready'));
+
+      revealContext = gsap.context(() => {
+        revealItems.forEach((item, index) => {
+          gsap.set(item, { autoAlpha: 0, y: 24 });
+
+          gsap.to(item, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.82,
+            ease: 'power3.out',
+            delay: Math.min(index * 0.03, 0.18),
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 86%',
+              once: true,
+            },
+          });
+        });
+      });
+    }
 
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -44,7 +60,8 @@ export function App() {
     sections.forEach((section) => sectionObserver.observe(section));
 
     return () => {
-      revealObserver.disconnect();
+      revealItems.forEach((item) => item.classList.remove('reveal-ready'));
+      revealContext?.revert();
       sectionObserver.disconnect();
     };
   }, []);
@@ -844,7 +861,7 @@ export function App() {
                     </div>
                   </div>
                   <div className="cv-footer-bar">
-                    <span>March 2026</span>
+                    <span>April 2026</span>
                     <span className="cv-dot">·</span>
                     <div className="partner-lockup partner-lockup-light partner-lockup-labels cv-partner-lockup" aria-label="Event partners">
                       {partnerLogos.map((partner) => (
@@ -884,7 +901,7 @@ export function App() {
                       <span className="cdown-festival">Pagsaulog<br />2026</span>
                     </div>
                     <div className="cdown-bottom">
-                      <span className="cdown-date-pill">March 2026 · Iloilo City</span>
+                      <span className="cdown-date-pill">April 2026 · Iloilo City</span>
                       <div className="partner-lockup partner-lockup-light partner-lockup-icons cdown-partner-lockup" aria-label="Event partners">
                         {partnerLogos.map((partner) => (
                           <div key={`countdown-${partner.label}`} className="partner-lockup-item">
@@ -994,7 +1011,7 @@ export function App() {
                       ))}
                     </div>
                     <div className="po-info-row">
-                      <span>March 2026</span>
+                      <span>April 2026</span>
                       <span>·</span>
                       <span>Iloilo City</span>
                     </div>
@@ -1031,7 +1048,7 @@ export function App() {
                         <span>T'nalak Weaver</span>
                         <span>Palawan</span>
                       </div>
-                      <div className="sp-event-row">NCAF 2026 · March · Iloilo</div>
+                      <div className="sp-event-row">NCAF 2026 · April · Iloilo</div>
                     </div>
                   </div>
                   <span className="asset-format-tag" aria-label="1080 by 1350 pixels">1080 × 1350</span>
@@ -1067,7 +1084,7 @@ export function App() {
                       </div>
                     </div>
                     <div className="tp-right-zone">
-                      <span className="tp-month">March</span>
+                      <span className="tp-month">April</span>
                       <span className="tp-year">2026</span>
                       <span className="tp-venue">Iloilo City</span>
                     </div>

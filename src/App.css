@@ -991,7 +991,11 @@ h4 {
 }
 
 .spotlight-bg {
-    background: linear-gradient(180deg, #383831, #1a1a1a);
+    background:
+        linear-gradient(180deg, rgba(56, 56, 49, 0.66), rgba(26, 26, 26, 0.82)),
+        url('/pexels-photo-8207648.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 .tarp-bg {
