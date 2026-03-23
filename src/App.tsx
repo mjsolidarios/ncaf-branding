@@ -372,7 +372,7 @@ export function App() {
                     <span className="glass-pill">Social Header</span>
                     <h4>The Living Archive</h4>
                   </div>
-                  <span className="asset-format-tag">1200 × 628</span>
+                  <span className="asset-format-tag" aria-label="1200 by 628 pixels">1200 × 628</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
@@ -391,7 +391,7 @@ export function App() {
                     <p className="countdown-number">12</p>
                     <p className="asset-subcopy uppercase font-bold tracking-widest text-xs">Days to Pagsaulog</p>
                   </div>
-                  <span className="asset-format-tag">1080 × 1920</span>
+                  <span className="asset-format-tag" aria-label="1080 by 1920 pixels">1080 × 1920</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
@@ -409,7 +409,7 @@ export function App() {
                     <h4>Artists announced this Friday.</h4>
                     <p className="asset-subcopy text-sm opacity-80">Check the live feed at 10AM.</p>
                   </div>
-                  <span className="asset-format-tag">1080 × 1350</span>
+                  <span className="asset-format-tag" aria-label="1080 by 1350 pixels">1080 × 1350</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>
@@ -426,7 +426,7 @@ export function App() {
                     <h4 className="text-brand-primary">Our Cultural Heritage</h4>
                     <div className="w-12 h-1 bg-brand-secondary mt-4 rounded-full"></div>
                   </div>
-                  <span className="asset-format-tag tag-dark">1920 × 1080</span>
+                  <span className="asset-format-tag tag-dark" aria-label="1920 by 1080 pixels">1920 × 1080</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-presentation">Presentation</span>
@@ -466,7 +466,7 @@ export function App() {
                     <h4 className="text-white spotlight-name">Maria Makiling</h4>
                     <p className="asset-subcopy text-sm text-white/80">A journey through indigenous weaving.</p>
                   </div>
-                  <span className="asset-format-tag">1080 × 1350</span>
+                  <span className="asset-format-tag" aria-label="1080 by 1350 pixels">1080 × 1350</span>
                 </div>
                 <div className="asset-meta">
                   <span className="asset-category category-social">Social</span>

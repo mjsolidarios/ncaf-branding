@@ -816,9 +816,9 @@ h4,
 }
 
 .asset-format-tag.tag-dark {
-    color: rgba(56, 56, 49, 0.7);
-    background: rgba(56, 56, 49, 0.08);
-    border: 1px solid rgba(56, 56, 49, 0.1);
+    color: var(--on-surface);
+    background: rgba(56, 56, 49, 0.12);
+    border: 1px solid rgba(56, 56, 49, 0.15);
 }
 
 .asset-card:hover .asset-format-tag {
