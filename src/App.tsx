@@ -496,7 +496,7 @@ export function App() {
               <p className="section-kicker">Voice & tone</p>
               <h2>The festival speaks with pride, warmth, and cultural conviction.</h2>
               <p className="section-lead">
-                Visual and verbal identity are inseparable. Every caption, headline, and announcement should feel as carefully crafted as the design it accompanies.
+                Visual and verbal identity are inseparable. Every caption, headline, and announcement — from inter-university competition calls to cultural showcase invitations — should feel as carefully crafted as the design it accompanies.
               </p>
             </div>
 
@@ -538,11 +538,11 @@ export function App() {
               <div className="copy-examples-grid">
                 <article className="copy-example copy-do">
                   <span className="copy-label copy-label-do">Write like this</span>
-                  <p className="copy-sample">"Join us in celebrating the living traditions that define our people — woven, sung, and passed down through generations."</p>
+                  <p className="copy-sample">"Witness the finest student artists from universities across the Philippines converge in Iloilo — weaving, performing, and competing in a celebration of living Filipino culture."</p>
                 </article>
                 <article className="copy-example copy-dont">
                   <span className="copy-label copy-label-dont">Not like this</span>
-                  <p className="copy-sample">"NCAF 2026 is an event happening in Iloilo. Come and attend the performances and cultural shows."</p>
+                  <p className="copy-sample">"NCAF 2026 is a competition where universities will compete in different events. Students will perform in front of the judges in Iloilo."</p>
                 </article>
               </div>
 
