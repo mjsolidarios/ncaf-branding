@@ -932,6 +932,8 @@ export function App() {
                   <h3>Facebook Cover Photo</h3>
                   <p className="asset-note">Official Facebook cover photo at 1200 × 628 px.</p>
                 </div>
+
+                <a className="asset-canva-link" href="https://www.canva.com/design/DAHExgaFXo8/dVSILVk1AOB7m7p3mfjHmQ/edit?utm_content=DAHExgaFXo8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
               </article>
 
 

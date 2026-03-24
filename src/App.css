@@ -901,9 +901,20 @@ h4 {
 
 .countdown-card,
 .announcement-card,
-.story-card-social,
-.dp-blast-card {
+.story-card-social {
     grid-column: span 2;
+}
+
+.dp-blast-card {
+    grid-column: span 6;
+    display: grid;
+    grid-template-columns: minmax(24rem, 32rem) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.dp-blast-card .asset-canvas {
+    margin-bottom: 0;
 }
 
 .asset-card {
@@ -1202,7 +1213,7 @@ h4 {
 
 .dp-blast-stage {
     position: relative;
-    width: min(100%, 22.5rem);
+    width: 100%;
     aspect-ratio: 1 / 1;
     margin: auto;
     border-radius: 24px;
@@ -1563,6 +1574,10 @@ h4 {
     .tarp-card {
         grid-column: span 4;
     }
+
+    .dp-blast-card {
+        grid-column: span 4;
+    }
 }
 
 @media (max-width: 1080px) {
@@ -1588,6 +1603,11 @@ h4 {
 
     .color-palette {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dp-blast-card {
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
     }
 }
 
