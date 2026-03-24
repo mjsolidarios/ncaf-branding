@@ -1291,94 +1291,96 @@ export function App() {
                   <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-festival-shirt" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
+            </div>
+          </div>
+        </section>
 
-              {/* 11. Display Picture Blast */}
-              <article className="asset-card dp-blast-card reveal" style={{ animationDelay: '0.75s' }}>
-                <div className="asset-canvas portrait dp-blast-bg">
-                  <div className="dp-blast-stage" ref={dpBlastStageRef}>
-                    <span className="dp-stage-badge">DP Preview</span>
-                    {dpBlastPhoto ? (
-                      <img
-                        src={dpBlastPhoto}
-                        alt="Uploaded profile photo preview"
-                        className="dp-user-photo"
-                        style={{ transform: `translate(${dpBlastOffsetX}px, ${dpBlastOffsetY}px) scale(${dpBlastScale})` }}
-                      />
-                    ) : (
-                      <div className="dp-placeholder">
-                        <span className="dp-placeholder-kicker">No photo yet</span>
-                        <span>Upload your photo to preview with the official frame</span>
-                      </div>
-                    )}
-                    <img src="/dp-blast-facebook.png" alt="NCAF DP blast frame" className="dp-blast-frame" />
-                    <span className="dp-stage-tip">Tip: use sliders to center your face in the ring.</span>
+
+        {/* ── DP BLAST CREATOR ─────────────────────────────────────────────── */}
+        <section id="dp-blast" className="section section-dp-blast reveal">
+          <div className="container dp-blast-card">
+            <div className="dp-blast-preview">
+              <div className="dp-blast-stage" ref={dpBlastStageRef}>
+                <span className="dp-stage-badge">DP Preview</span>
+                {dpBlastPhoto ? (
+                  <img
+                    src={dpBlastPhoto}
+                    alt="Uploaded profile photo preview"
+                    className="dp-user-photo"
+                    style={{ transform: `translate(${dpBlastOffsetX}px, ${dpBlastOffsetY}px) scale(${dpBlastScale})` }}
+                  />
+                ) : (
+                  <div className="dp-placeholder">
+                    <span className="dp-placeholder-kicker">No photo yet</span>
+                    <span>Upload your photo to preview with the official frame</span>
                   </div>
-                  <span className="asset-format-tag" aria-label="1080 by 1080 pixels">1080 × 1080</span>
+                )}
+                <img src="/dp-blast-facebook.png" alt="NCAF DP blast frame" className="dp-blast-frame" />
+                <span className="dp-stage-tip">Tip: use sliders to center your face in the ring.</span>
+              </div>
+              <span className="asset-format-tag" aria-label="1080 by 1080 pixels">1080 × 1080</span>
+            </div>
+            <div className="dp-blast-controls">
+              <span className="asset-category category-social">Social</span>
+              <h3>Display Picture Blast</h3>
+              <p className="asset-note">Interactive profile-frame mockup. Upload a photo, then adjust zoom and position like Twibbon-style framing for instant rollout previews.</p>
+
+              <div className="dp-controls">
+                <div className="dp-controls-head">
+                  <p className="dp-controls-title">Photo controls</p>
+                  <span className="dp-controls-chip">Live</span>
                 </div>
-                <div className="asset-meta">
-                  <span className="asset-category category-social">Social</span>
-                  <h3>Display Picture Blast</h3>
-                  <p className="asset-note">Interactive profile-frame mockup. Upload a photo, then adjust zoom and position like Twibbon-style framing for instant rollout previews.</p>
 
-                  <div className="dp-controls">
-                    <div className="dp-controls-head">
-                      <p className="dp-controls-title">Photo controls</p>
-                      <span className="dp-controls-chip">Live</span>
-                    </div>
-
-                    <div className="dp-upload-row">
-                      <label className="dp-upload-label">
-                        Choose photo
-                        <input className="dp-upload-input" type="file" accept="image/*" onChange={handleDpBlastUpload} />
-                      </label>
-                      <button type="button" className="dp-reset-btn" onClick={resetDpBlast}>Reset</button>
-                      <button type="button" className="dp-download-btn" onClick={downloadDpBlast} disabled={!dpBlastPhoto}>Download PNG</button>
-                    </div>
-
-                    <label className="dp-control">
-                      <span>Zoom</span>
-                      <input
-                        type="range"
-                        min="0.7"
-                        max="2.2"
-                        step="0.01"
-                        value={dpBlastScale}
-                        onChange={(e) => setDpBlastScale(Number(e.target.value))}
-                      />
-                      <strong>{dpBlastScale.toFixed(2)}x</strong>
-                    </label>
-
-                    <label className="dp-control">
-                      <span>Horizontal</span>
-                      <input
-                        type="range"
-                        min="-140"
-                        max="140"
-                        step="1"
-                        value={dpBlastOffsetX}
-                        onChange={(e) => setDpBlastOffsetX(Number(e.target.value))}
-                      />
-                      <strong>{dpBlastOffsetX}px</strong>
-                    </label>
-
-                    <label className="dp-control">
-                      <span>Vertical</span>
-                      <input
-                        type="range"
-                        min="-140"
-                        max="140"
-                        step="1"
-                        value={dpBlastOffsetY}
-                        onChange={(e) => setDpBlastOffsetY(Number(e.target.value))}
-                      />
-                      <strong>{dpBlastOffsetY}px</strong>
-                    </label>
-                  </div>
-
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-dp-blast" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                <div className="dp-upload-row">
+                  <label className="dp-upload-label">
+                    Choose photo
+                    <input className="dp-upload-input" type="file" accept="image/*" onChange={handleDpBlastUpload} />
+                  </label>
+                  <button type="button" className="dp-reset-btn" onClick={resetDpBlast}>Reset</button>
+                  <button type="button" className="dp-download-btn" onClick={downloadDpBlast} disabled={!dpBlastPhoto}>Download PNG</button>
                 </div>
-              </article>
 
+                <label className="dp-control">
+                  <span>Zoom</span>
+                  <input
+                    type="range"
+                    min="0.7"
+                    max="2.2"
+                    step="0.01"
+                    value={dpBlastScale}
+                    onChange={(e) => setDpBlastScale(Number(e.target.value))}
+                  />
+                  <strong>{dpBlastScale.toFixed(2)}x</strong>
+                </label>
+
+                <label className="dp-control">
+                  <span>Horizontal</span>
+                  <input
+                    type="range"
+                    min="-140"
+                    max="140"
+                    step="1"
+                    value={dpBlastOffsetX}
+                    onChange={(e) => setDpBlastOffsetX(Number(e.target.value))}
+                  />
+                  <strong>{dpBlastOffsetX}px</strong>
+                </label>
+
+                <label className="dp-control">
+                  <span>Vertical</span>
+                  <input
+                    type="range"
+                    min="-140"
+                    max="140"
+                    step="1"
+                    value={dpBlastOffsetY}
+                    onChange={(e) => setDpBlastOffsetY(Number(e.target.value))}
+                  />
+                  <strong>{dpBlastOffsetY}px</strong>
+                </label>
+              </div>
+
+              <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-dp-blast" target="_blank" rel="noopener noreferrer">Open in Canva</a>
             </div>
           </div>
         </section>
