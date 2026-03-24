@@ -991,7 +991,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Facebook</h3>
                   <p className="asset-note">Heritage Green base with Banig weave overlay. Left-anchored layout maintains brand clarity at all thumbnail sizes.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-facebook-cover" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0WYmif8/zZ5u1JstKO4VaksuXkj6vA/edit?utm_content=DAHE0WYmif8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1069,7 +1069,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Announcement Card</h3>
                   <p className="asset-note">Royal Culture to Heritage Green diagonal. High-contrast white display type for feed impact with an editorial composition.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-announcement-card" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0mH_0hw/94b6dmCo4KLF5VrSEK_Xdw/edit?utm_content=DAHE0mH_0hw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
