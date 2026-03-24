@@ -1294,7 +1294,7 @@ export function App() {
 
               {/* 11. Display Picture Blast */}
               <article className="asset-card dp-blast-card reveal" style={{ animationDelay: '0.75s' }}>
-                <div className="asset-canvas portrait dp-blast-bg">
+                <div className="asset-canvas dp-blast-bg">
                   <div className="dp-blast-stage" ref={dpBlastStageRef}>
                     <span className="dp-stage-badge">DP Preview</span>
                     {dpBlastPhoto ? (
