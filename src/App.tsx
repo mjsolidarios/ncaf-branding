@@ -3,11 +3,14 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from "@/components/ui/button"
 import './App.css'
+import { Assignments } from './Assignments'
 
 export function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('top');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
   const [dpBlastPhoto, setDpBlastPhoto] = useState<string | null>(null);
   const [dpBlastScale, setDpBlastScale] = useState(1);
   const [dpBlastOffsetX, setDpBlastOffsetX] = useState(0);
@@ -51,6 +54,7 @@ export function App() {
     }
 
     const sectionObserver = new IntersectionObserver((entries) => {
+      if (isScrollingRef.current) return;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -89,11 +93,26 @@ export function App() {
     }
   };
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    isScrollingRef.current = true;
+    setActiveSection(id === 'top' ? 'overview' : id);
+    
+    if (scrollTimeoutRef.current) window.clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
+
+    if (id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        // Negative 30px offset so the header doesn't cover the title
+        const y = element.getBoundingClientRect().top + window.scrollY - 30;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
     setIsNavOpen(false);
   };
@@ -262,6 +281,12 @@ export function App() {
       <nav className="site-nav">
         <div className="container nav-inner">
           <a href="#top" className="nav-brand" onClick={(e) => scrollToSection(e, 'top')}>NCAF 2026</a>
+          
+          <div className="page-switcher hidden md:flex">
+             <button aria-current={activeSection !== 'assignments' ? 'page' : undefined} className={activeSection !== 'assignments' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'top')}>Brand System</button>
+             <button aria-current={activeSection === 'assignments' ? 'page' : undefined} className={activeSection === 'assignments' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'assignments')}>Assignments</button>
+          </div>
+
           <button
             className={`nav-toggle ${isNavOpen ? 'is-open' : ''}`}
             type="button"
@@ -275,21 +300,46 @@ export function App() {
             <span className="nav-toggle-icon"></span>
           </button>
 
-          <ul className={`nav-links ${isNavOpen ? 'is-open' : ''}`} id="primary-nav">
-            <li><a href="#overview" className={activeSection === 'overview' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'overview')}>Story</a></li>
-            <li><a href="#logo" className={activeSection === 'logo' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'logo')}>Logo</a></li>
-            <li><a href="#colors" className={activeSection === 'colors' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'colors')}>Palette</a></li>
-            <li><a href="#patterns" className={activeSection === 'patterns' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'patterns')}>Patterns</a></li>
-            <li><a href="#typography" className={activeSection === 'typography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'typography')}>Type</a></li>
-            <li><a href="#voice" className={activeSection === 'voice' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'voice')}>Voice</a></li>
-            <li><a href="#photography" className={activeSection === 'photography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'photography')}>Photo</a></li>
-            <li><a href="#grid" className={activeSection === 'grid' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'grid')}>Grid</a></li>
-            <li><a href="#motion" className={activeSection === 'motion' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'motion')}>Motion</a></li>
-            <li><a href="#experience" className={activeSection === 'experience' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'experience')}>Layers</a></li>
-            <li><a href="#accessibility" className={activeSection === 'accessibility' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'accessibility')}>A11y</a></li>
-            <li><a href="#brand-assets" className={activeSection === 'brand-assets' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'brand-assets')}>Assets</a></li>
-            <li><a href="#dos-donts" className={activeSection === 'dos-donts' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'dos-donts')}>Rules</a></li>
+          <ul className={`nav-links ${isNavOpen ? 'is-open' : ''} mobile-only`} id="primary-nav">
+             <li>
+               <a href="#top" onClick={(e) => { scrollToSection(e, 'top'); setIsNavOpen(false); }} className={activeSection !== 'assignments' ? 'is-active' : ''}>Brand System</a>
+             </li>
+             <li>
+               <a href="#assignments" onClick={(e) => { scrollToSection(e, 'assignments'); setIsNavOpen(false); }} className={activeSection === 'assignments' ? 'is-active' : ''}>Assignments</a>
+             </li>
+             <li className="nav-divider"></li>
+             <li><a href="#overview" className={activeSection === 'overview' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'overview')}>Story</a></li>
+             <li><a href="#logo" className={activeSection === 'logo' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'logo')}>Logo</a></li>
+             <li><a href="#colors" className={activeSection === 'colors' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'colors')}>Palette</a></li>
+             <li><a href="#patterns" className={activeSection === 'patterns' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'patterns')}>Patterns</a></li>
+             <li><a href="#typography" className={activeSection === 'typography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'typography')}>Type</a></li>
+             <li><a href="#voice" className={activeSection === 'voice' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'voice')}>Voice</a></li>
+             <li><a href="#photography" className={activeSection === 'photography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'photography')}>Photo</a></li>
+             <li><a href="#grid" className={activeSection === 'grid' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'grid')}>Grid</a></li>
+             <li><a href="#motion" className={activeSection === 'motion' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'motion')}>Motion</a></li>
+             <li><a href="#experience" className={activeSection === 'experience' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'experience')}>Layers</a></li>
+             <li><a href="#accessibility" className={activeSection === 'accessibility' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'accessibility')}>A11y</a></li>
+             <li><a href="#brand-assets" className={activeSection === 'brand-assets' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'brand-assets')}>Assets</a></li>
+             <li><a href="#dos-donts" className={activeSection === 'dos-donts' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'dos-donts')}>Rules</a></li>
           </ul>
+        </div>
+
+        <div className={`container sub-nav-inner hidden md:flex transition-opacity duration-300 ${activeSection === 'assignments' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            <ul className="sub-nav-links">
+              <li><a href="#overview" className={activeSection === 'overview' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'overview')}>Story</a></li>
+              <li><a href="#logo" className={activeSection === 'logo' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'logo')}>Logo</a></li>
+              <li><a href="#colors" className={activeSection === 'colors' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'colors')}>Palette</a></li>
+              <li><a href="#patterns" className={activeSection === 'patterns' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'patterns')}>Patterns</a></li>
+              <li><a href="#typography" className={activeSection === 'typography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'typography')}>Type</a></li>
+              <li><a href="#voice" className={activeSection === 'voice' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'voice')}>Voice</a></li>
+              <li><a href="#photography" className={activeSection === 'photography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'photography')}>Photo</a></li>
+              <li><a href="#grid" className={activeSection === 'grid' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'grid')}>Grid</a></li>
+              <li><a href="#motion" className={activeSection === 'motion' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'motion')}>Motion</a></li>
+              <li><a href="#experience" className={activeSection === 'experience' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'experience')}>Layers</a></li>
+              <li><a href="#accessibility" className={activeSection === 'accessibility' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'accessibility')}>A11y</a></li>
+              <li><a href="#brand-assets" className={activeSection === 'brand-assets' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'brand-assets')}>Assets</a></li>
+              <li><a href="#dos-donts" className={activeSection === 'dos-donts' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'dos-donts')}>Rules</a></li>
+            </ul>
         </div>
       </nav>
 
@@ -1439,6 +1489,8 @@ export function App() {
             </aside>
           </div>
         </section>
+
+        <Assignments />
       </main>
 
       <footer className="site-footer">
