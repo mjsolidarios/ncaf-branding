@@ -875,6 +875,7 @@ h4 {
 
 .cover-photo,
 .presentation-card,
+.logo-asset-card,
 .poster-card {
     grid-column: span 3;
 }

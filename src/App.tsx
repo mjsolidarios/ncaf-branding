@@ -936,6 +936,23 @@ export function App() {
                 <a className="asset-canva-link" href="https://www.canva.com/design/DAHExgaFXo8/dVSILVk1AOB7m7p3mfjHmQ/edit?utm_content=DAHExgaFXo8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
               </article>
 
+              {/* 1. Logo Card */}
+              <article className="asset-card logo-asset-card reveal" style={{ animationDelay: '0.08s' }}>
+                <div className="asset-canvas landscape presentation-bg">
+                  <div className="asset-texture"></div>
+                  <div style={{ position: 'relative', zIndex: 10, display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="/brand-logo.png" alt="NCAF 2026 Logo Lockup" style={{ width: 'auto', height: '100%', maxHeight: '400px', objectFit: 'contain' }} />
+                  </div>
+                  <span className="asset-format-tag tag-dark">Logo</span>
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-presentation">Identity</span>
+                  <h3>Primary Logo Card</h3>
+                  <p className="asset-note">The official NCAF 2026 logo lockup on Woven Bone base. Clean, breathable space highlighting the cultural swoosh and typography.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0V1ehYc/ZulHKmQoRF65TQeMfFug8g/edit?utm_content=DAHE0V1ehYc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                </div>
+              </article>
+
 
               {/* 1. Facebook */}
               <article className="asset-card cover-photo reveal" style={{ animationDelay: '0.05s' }}>
