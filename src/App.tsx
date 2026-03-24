@@ -3,11 +3,14 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from "@/components/ui/button"
 import './App.css'
+import { Assignments } from './Assignments'
 
 export function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('top');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const isScrollingRef = useRef(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
   const [dpBlastPhoto, setDpBlastPhoto] = useState<string | null>(null);
   const [dpBlastScale, setDpBlastScale] = useState(1);
   const [dpBlastOffsetX, setDpBlastOffsetX] = useState(0);
@@ -51,6 +54,7 @@ export function App() {
     }
 
     const sectionObserver = new IntersectionObserver((entries) => {
+      if (isScrollingRef.current) return;
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -89,11 +93,26 @@ export function App() {
     }
   };
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLElement>, id: string) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    isScrollingRef.current = true;
+    setActiveSection(id === 'top' ? 'overview' : id);
+
+    if (scrollTimeoutRef.current) window.clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
+
+    if (id === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        // Negative 30px offset so the header doesn't cover the title
+        const y = element.getBoundingClientRect().top + window.scrollY - 30;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
     }
     setIsNavOpen(false);
   };
@@ -207,10 +226,10 @@ export function App() {
             </p>
 
             <div className="hero-actions">
-              <Button className="btn-primary" asChild>
+              <Button className="btn-primary py-6" asChild>
                 <a href="#brand-assets" onClick={(e) => scrollToSection(e, 'brand-assets')}>Explore asset examples</a>
               </Button>
-              <Button variant="outline" className="btn-secondary" asChild>
+              <Button variant="outline" className="btn-secondary py-6" asChild>
                 <a href="#colors" onClick={(e) => scrollToSection(e, 'colors')}>Review the palette</a>
               </Button>
             </div>
@@ -262,6 +281,12 @@ export function App() {
       <nav className="site-nav">
         <div className="container nav-inner">
           <a href="#top" className="nav-brand" onClick={(e) => scrollToSection(e, 'top')}>NCAF 2026</a>
+
+          <div className="page-switcher hidden md:flex">
+            <button aria-current={activeSection !== 'assignments' ? 'page' : undefined} className={activeSection !== 'assignments' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'top')}>Brand System</button>
+            <button aria-current={activeSection === 'assignments' ? 'page' : undefined} className={activeSection === 'assignments' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'assignments')}>Assignments</button>
+          </div>
+
           <button
             className={`nav-toggle ${isNavOpen ? 'is-open' : ''}`}
             type="button"
@@ -275,7 +300,32 @@ export function App() {
             <span className="nav-toggle-icon"></span>
           </button>
 
-          <ul className={`nav-links ${isNavOpen ? 'is-open' : ''}`} id="primary-nav">
+          <ul className={`nav-links ${isNavOpen ? 'is-open' : ''} mobile-only`} id="primary-nav">
+            <li>
+              <a href="#top" onClick={(e) => { scrollToSection(e, 'top'); setIsNavOpen(false); }} className={activeSection !== 'assignments' ? 'is-active' : ''}>Brand System</a>
+            </li>
+            <li>
+              <a href="#assignments" onClick={(e) => { scrollToSection(e, 'assignments'); setIsNavOpen(false); }} className={activeSection === 'assignments' ? 'is-active' : ''}>Assignments</a>
+            </li>
+            <li className="nav-divider"></li>
+            <li><a href="#overview" className={activeSection === 'overview' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'overview')}>Story</a></li>
+            <li><a href="#logo" className={activeSection === 'logo' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'logo')}>Logo</a></li>
+            <li><a href="#colors" className={activeSection === 'colors' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'colors')}>Palette</a></li>
+            <li><a href="#patterns" className={activeSection === 'patterns' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'patterns')}>Patterns</a></li>
+            <li><a href="#typography" className={activeSection === 'typography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'typography')}>Type</a></li>
+            <li><a href="#voice" className={activeSection === 'voice' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'voice')}>Voice</a></li>
+            <li><a href="#photography" className={activeSection === 'photography' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'photography')}>Photo</a></li>
+            <li><a href="#grid" className={activeSection === 'grid' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'grid')}>Grid</a></li>
+            <li><a href="#motion" className={activeSection === 'motion' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'motion')}>Motion</a></li>
+            <li><a href="#experience" className={activeSection === 'experience' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'experience')}>Layers</a></li>
+            <li><a href="#accessibility" className={activeSection === 'accessibility' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'accessibility')}>A11y</a></li>
+            <li><a href="#brand-assets" className={activeSection === 'brand-assets' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'brand-assets')}>Assets</a></li>
+            <li><a href="#dos-donts" className={activeSection === 'dos-donts' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'dos-donts')}>Rules</a></li>
+          </ul>
+        </div>
+
+        <div className={`container sub-nav-inner hidden md:flex transition-opacity duration-300 ${activeSection === 'assignments' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <ul className="sub-nav-links">
             <li><a href="#overview" className={activeSection === 'overview' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'overview')}>Story</a></li>
             <li><a href="#logo" className={activeSection === 'logo' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'logo')}>Logo</a></li>
             <li><a href="#colors" className={activeSection === 'colors' ? 'is-active' : ''} onClick={(e) => scrollToSection(e, 'colors')}>Palette</a></li>
@@ -936,6 +986,23 @@ export function App() {
                 <a className="asset-canva-link" href="https://www.canva.com/design/DAHExgaFXo8/dVSILVk1AOB7m7p3mfjHmQ/edit?utm_content=DAHExgaFXo8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
               </article>
 
+              {/* 1. Logo Card */}
+              <article className="asset-card logo-asset-card reveal" style={{ animationDelay: '0.08s' }}>
+                <div className="asset-canvas landscape presentation-bg">
+                  <div className="asset-texture"></div>
+                  <div style={{ position: 'relative', zIndex: 10, display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                    <img src="/brand-logo.png" alt="NCAF 2026 Logo Lockup" style={{ width: 'auto', height: '100%', maxHeight: '400px', objectFit: 'contain' }} />
+                  </div>
+                  <span className="asset-format-tag tag-dark">Logo</span>
+                </div>
+                <div className="asset-meta">
+                  <span className="asset-category category-presentation">Identity</span>
+                  <h3>Primary Logo Card</h3>
+                  <p className="asset-note">The official NCAF 2026 logo lockup on Woven Bone base. Clean, breathable space highlighting the cultural swoosh and typography.</p>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0V1ehYc/ZulHKmQoRF65TQeMfFug8g/edit?utm_content=DAHE0V1ehYc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                </div>
+              </article>
+
 
               {/* 1. Facebook */}
               <article className="asset-card cover-photo reveal" style={{ animationDelay: '0.05s' }}>
@@ -974,7 +1041,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Facebook</h3>
                   <p className="asset-note">Heritage Green base with Banig weave overlay. Left-anchored layout maintains brand clarity at all thumbnail sizes.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-facebook-cover" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0WYmif8/zZ5u1JstKO4VaksuXkj6vA/edit?utm_content=DAHE0WYmif8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1014,7 +1081,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Instagram Story Countdown</h3>
                   <p className="asset-note">Ceremonial orange with concentric ring motifs. The display number anchors the composition as the centrepiece.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-story-countdown" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0L-zbvw/ToIpetpH7TELJGBhcSFoqg/edit?utm_content=DAHE0L-zbvw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1052,7 +1119,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Announcement Card</h3>
                   <p className="asset-note">Royal Culture to Heritage Green diagonal. High-contrast white display type for feed impact with an editorial composition.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-announcement-card" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0mH_0hw/94b6dmCo4KLF5VrSEK_Xdw/edit?utm_content=DAHE0mH_0hw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
@@ -1291,94 +1358,96 @@ export function App() {
                   <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-festival-shirt" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
+            </div>
+          </div>
+        </section>
 
-              {/* 11. Display Picture Blast */}
-              <article className="asset-card dp-blast-card reveal" style={{ animationDelay: '0.75s' }}>
-                <div className="asset-canvas dp-blast-bg">
-                  <div className="dp-blast-stage" ref={dpBlastStageRef}>
-                    <span className="dp-stage-badge">DP Preview</span>
-                    {dpBlastPhoto ? (
-                      <img
-                        src={dpBlastPhoto}
-                        alt="Uploaded profile photo preview"
-                        className="dp-user-photo"
-                        style={{ transform: `translate(${dpBlastOffsetX}px, ${dpBlastOffsetY}px) scale(${dpBlastScale})` }}
-                      />
-                    ) : (
-                      <div className="dp-placeholder">
-                        <span className="dp-placeholder-kicker">No photo yet</span>
-                        <span>Upload your photo to preview with the official frame</span>
-                      </div>
-                    )}
-                    <img src="/dp-blast-facebook.png" alt="NCAF DP blast frame" className="dp-blast-frame" />
-                    <span className="dp-stage-tip">Tip: use sliders to center your face in the ring.</span>
+
+        {/* ── DP BLAST CREATOR ─────────────────────────────────────────────── */}
+        <section id="dp-blast" className="section section-dp-blast reveal">
+          <div className="container dp-blast-card">
+            <div className="dp-blast-preview">
+              <div className="dp-blast-stage" ref={dpBlastStageRef}>
+                <span className="dp-stage-badge">DP Preview</span>
+                {dpBlastPhoto ? (
+                  <img
+                    src={dpBlastPhoto}
+                    alt="Uploaded profile photo preview"
+                    className="dp-user-photo"
+                    style={{ transform: `translate(${dpBlastOffsetX}px, ${dpBlastOffsetY}px) scale(${dpBlastScale})` }}
+                  />
+                ) : (
+                  <div className="dp-placeholder">
+                    <span className="dp-placeholder-kicker">No photo yet</span>
+                    <span>Upload your photo to preview with the official frame</span>
                   </div>
-                  <span className="asset-format-tag" aria-label="1080 by 1080 pixels">1080 × 1080</span>
+                )}
+                <img src="/dp-blast-facebook.png" alt="NCAF DP blast frame" className="dp-blast-frame" />
+                <span className="dp-stage-tip">Tip: use sliders to center your face in the ring.</span>
+              </div>
+              <span className="asset-format-tag" aria-label="1080 by 1080 pixels">1080 × 1080</span>
+            </div>
+            <div className="dp-blast-controls">
+              <span className="asset-category category-social">Social</span>
+              <h3>Display Picture Blast</h3>
+              <p className="asset-note">Interactive profile-frame mockup. Upload a photo, then adjust zoom and position like Twibbon-style framing for instant rollout previews.</p>
+
+              <div className="dp-controls">
+                <div className="dp-controls-head">
+                  <p className="dp-controls-title">Photo controls</p>
+                  <span className="dp-controls-chip">Live</span>
                 </div>
-                <div className="asset-meta">
-                  <span className="asset-category category-social">Social</span>
-                  <h3>Display Picture Blast</h3>
-                  <p className="asset-note">Interactive profile-frame mockup. Upload a photo, then adjust zoom and position like Twibbon-style framing for instant rollout previews.</p>
 
-                  <div className="dp-controls">
-                    <div className="dp-controls-head">
-                      <p className="dp-controls-title">Photo controls</p>
-                      <span className="dp-controls-chip">Live</span>
-                    </div>
-
-                    <div className="dp-upload-row">
-                      <label className="dp-upload-label">
-                        Choose photo
-                        <input className="dp-upload-input" type="file" accept="image/*" onChange={handleDpBlastUpload} />
-                      </label>
-                      <button type="button" className="dp-reset-btn" onClick={resetDpBlast}>Reset</button>
-                      <button type="button" className="dp-download-btn" onClick={downloadDpBlast} disabled={!dpBlastPhoto}>Download PNG</button>
-                    </div>
-
-                    <label className="dp-control">
-                      <span>Zoom</span>
-                      <input
-                        type="range"
-                        min="0.7"
-                        max="2.2"
-                        step="0.01"
-                        value={dpBlastScale}
-                        onChange={(e) => setDpBlastScale(Number(e.target.value))}
-                      />
-                      <strong>{dpBlastScale.toFixed(2)}x</strong>
-                    </label>
-
-                    <label className="dp-control">
-                      <span>Horizontal</span>
-                      <input
-                        type="range"
-                        min="-140"
-                        max="140"
-                        step="1"
-                        value={dpBlastOffsetX}
-                        onChange={(e) => setDpBlastOffsetX(Number(e.target.value))}
-                      />
-                      <strong>{dpBlastOffsetX}px</strong>
-                    </label>
-
-                    <label className="dp-control">
-                      <span>Vertical</span>
-                      <input
-                        type="range"
-                        min="-140"
-                        max="140"
-                        step="1"
-                        value={dpBlastOffsetY}
-                        onChange={(e) => setDpBlastOffsetY(Number(e.target.value))}
-                      />
-                      <strong>{dpBlastOffsetY}px</strong>
-                    </label>
-                  </div>
-
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-dp-blast" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                <div className="dp-upload-row">
+                  <label className="dp-upload-label">
+                    Choose photo
+                    <input className="dp-upload-input" type="file" accept="image/*" onChange={handleDpBlastUpload} />
+                  </label>
+                  <button type="button" className="dp-reset-btn" onClick={resetDpBlast}>Reset</button>
+                  <button type="button" className="dp-download-btn" onClick={downloadDpBlast} disabled={!dpBlastPhoto}>Download PNG</button>
                 </div>
-              </article>
 
+                <label className="dp-control">
+                  <span>Zoom</span>
+                  <input
+                    type="range"
+                    min="0.7"
+                    max="2.2"
+                    step="0.01"
+                    value={dpBlastScale}
+                    onChange={(e) => setDpBlastScale(Number(e.target.value))}
+                  />
+                  <strong>{dpBlastScale.toFixed(2)}x</strong>
+                </label>
+
+                <label className="dp-control">
+                  <span>Horizontal</span>
+                  <input
+                    type="range"
+                    min="-140"
+                    max="140"
+                    step="1"
+                    value={dpBlastOffsetX}
+                    onChange={(e) => setDpBlastOffsetX(Number(e.target.value))}
+                  />
+                  <strong>{dpBlastOffsetX}px</strong>
+                </label>
+
+                <label className="dp-control">
+                  <span>Vertical</span>
+                  <input
+                    type="range"
+                    min="-140"
+                    max="140"
+                    step="1"
+                    value={dpBlastOffsetY}
+                    onChange={(e) => setDpBlastOffsetY(Number(e.target.value))}
+                  />
+                  <strong>{dpBlastOffsetY}px</strong>
+                </label>
+              </div>
+
+              <a className="asset-canva-link" href="https://www.canva.com/design/DAHEPe1J5JQ/4RGRJl8rpv6xt6-ZGc0FVg/edit?utm_content=DAHEPe1J5JQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
             </div>
           </div>
         </section>
@@ -1420,6 +1489,8 @@ export function App() {
             </aside>
           </div>
         </section>
+
+        <Assignments />
       </main>
 
       <footer className="site-footer">

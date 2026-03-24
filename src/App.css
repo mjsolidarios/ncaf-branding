@@ -138,8 +138,9 @@ h4 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    padding: 1rem 1.75rem;
+    gap: 0.75rem;
+    padding: 1.15rem 2.25rem;
+    font-size: 1.1rem;
     border-radius: var(--radius-pill);
     text-decoration: none;
     border: none;
@@ -307,6 +308,86 @@ h4 {
     font-size: 1.2rem;
 }
 
+.page-switcher {
+    display: flex;
+    background: rgba(56, 56, 49, 0.05); /* very light dark */
+    padding: 0.25rem;
+    border-radius: var(--radius-pill);
+    gap: 0.25rem;
+}
+
+.page-switcher button {
+    background: transparent;
+    border: none;
+    padding: 0.4rem 1.25rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--on-surface-soft);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.page-switcher button:hover {
+    color: var(--on-surface);
+}
+
+.page-switcher button.active {
+    background: #fff;
+    color: var(--primary);
+    box-shadow: 0 2px 8px rgba(56, 56, 49, 0.05);
+}
+
+.sub-nav-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    background: rgba(247, 242, 231, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(64, 110, 81, 0.05);
+    box-shadow: 0 4px 16px rgba(56, 56, 49, 0.04);
+    margin: 0.5rem auto 0;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sub-nav-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.sub-nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-nav-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    text-decoration: none;
+    color: var(--on-surface-soft);
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.sub-nav-links a:hover,
+.sub-nav-links a.is-active {
+    color: var(--primary);
+    background: rgba(64, 110, 81, 0.08);
+}
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -399,6 +480,19 @@ h4 {
     max-height: 500px;
     opacity: 1;
     padding-top: 1rem;
+}
+
+.nav-divider {
+    height: 1px;
+    background: rgba(56, 56, 49, 0.1);
+    margin: 0.5rem 1rem;
+    width: calc(100% - 2rem);
+}
+
+@media (min-width: 761px) {
+    .mobile-only {
+        display: none !important;
+    }
 }
 
 .container {
@@ -875,6 +969,7 @@ h4 {
 
 .cover-photo,
 .presentation-card,
+.logo-asset-card,
 .poster-card {
     grid-column: span 3;
 }
@@ -908,8 +1003,8 @@ h4 {
 .dp-blast-card {
     grid-column: span 6;
     display: grid;
-    grid-template-columns: minmax(24rem, 32rem) minmax(0, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: minmax(20rem, 28rem) 1fr;
+    gap: 2rem;
     align-items: start;
 }
 
@@ -1204,6 +1299,7 @@ h4 {
 }
 
 .dp-blast-bg {
+    aspect-ratio: 1 / 1;
     background:
         radial-gradient(circle at 12% 18%, rgba(131, 74, 174, 0.16), transparent 42%),
         radial-gradient(circle at 86% 82%, rgba(64, 110, 81, 0.18), transparent 44%),
@@ -1216,7 +1312,7 @@ h4 {
     width: 100%;
     aspect-ratio: 1 / 1;
     margin: auto;
-    border-radius: 24px;
+    border-radius: 6%;
     overflow: hidden;
     background: linear-gradient(180deg, #ece6d8, #f7f2e7);
     box-shadow:
@@ -1253,6 +1349,10 @@ h4 {
     object-fit: cover;
     transform-origin: center center;
     z-index: 2;
+}
+
+.dp-placeholder span {
+    max-width: 220px;
 }
 
 .dp-placeholder {
@@ -1612,6 +1712,11 @@ h4 {
 }
 
 @media (max-width: 760px) {
+    .page-switcher,
+    .sub-nav-inner {
+        display: none !important;
+    }
+
     .container {
         width: min(100% - 1.5rem, var(--content-width));
     }
@@ -1641,10 +1746,15 @@ h4 {
 
     .hero-actions {
         flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
     }
 
     .hero-actions .btn {
         width: 100%;
+        padding: 1.1rem 1.5rem;
+        font-size: 1.05rem;
+        justify-content: center;
     }
 
     .asset-grid {
@@ -1659,7 +1769,12 @@ h4 {
     .announcement-card,
     .story-card-social,
     .dp-blast-card,
-    .tarp-card {
+    .tarp-card,
+    .fb-cover-photo-card,
+    .logo-asset-card,
+    .email-card,
+    .lowerthird-card,
+    .merch-card {
         grid-column: span 1;
     }
 
