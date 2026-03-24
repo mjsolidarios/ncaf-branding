@@ -1014,7 +1014,7 @@ export function App() {
                   <span className="asset-category category-social">Social</span>
                   <h3>Instagram Story Countdown</h3>
                   <p className="asset-note">Ceremonial orange with concentric ring motifs. The display number anchors the composition as the centrepiece.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-story-countdown" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://www.canva.com/design/DAHE0L-zbvw/ToIpetpH7TELJGBhcSFoqg/edit?utm_content=DAHE0L-zbvw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
