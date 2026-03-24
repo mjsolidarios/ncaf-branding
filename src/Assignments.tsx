@@ -70,9 +70,9 @@ const assignmentsData = [
     category: "Merchandise design",
     tasks: [
       { name: "TShirt", size: "TBD", assignee: "Mel Tatud" },
-      { name: "Tote Bag", size: "TBD", assignee: "TBD" },
-      { name: "Lanyards", size: "TBD", assignee: "TBD" },
-      { name: "ID Cards", size: "TBD", assignee: "TBD" }
+      { name: "Tote Bag", size: "TBD", assignee: "Mel Tatud" },
+      { name: "Lanyards", size: "TBD", assignee: "Mel Tatud" },
+      { name: "ID Cards", size: "TBD", assignee: "Mel Tatud" }
     ]
   }
 ];
