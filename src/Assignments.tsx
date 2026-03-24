@@ -20,50 +20,50 @@ const assignmentsData = [
   {
     category: "Tarpauline Layouts",
     tasks: [
-      { name: "Event Tarp", size: "Various Sizes", assignee: "TBD" },
-      { name: "Regional Street Banner", size: "TBD", assignee: "TBD" },
-      { name: "Regional Long Banner", size: "TBD", assignee: "TBD" },
-      { name: "Welcome Tarps", size: "TBD", assignee: "TBD" }
+      { name: "Event Tarp", size: "4' x 6'", assignee: "Francis (Overseer) with Link Team" },
+      { name: "Regional Street Banner", size: "4' x 10'", assignee: "Julia Yzzabel Roa, Nathe Rey Amar, Lindsay Pillora" },
+      { name: "Regional Long Banner", size: "4' x 10'", assignee: "Julia Yzzabel Roa, Nathe Rey Amar, Lindsay Pillora" },
+      { name: "Welcome Tarps", size: "4' x 10'", assignee: "Yunize (Overseer), James Remegio, SC Team" }
     ]
   },
   {
     category: "Social Media Pubmats",
     tasks: [
-      { name: "Event Announcements", size: "1080 x 1080 px (Square), 1080 x 1920 px (Story)", assignee: "TBD" },
-      { name: "Countdown", size: "1080 x 1080 px (Square), 1080 x 1920 px (Story)", assignee: "TBD" },
-      { name: "Winners", size: "1080 x 1080 px (Square), 1080 x 1920 px (Story)", assignee: "TBD" }
+      { name: "Event Announcements", size: "1080 x 1080 px (Square), 1080 x 1920 px (Story)", assignee: "Sir Mark" },
+      { name: "Countdown", size: "1080 x 1080 px (Square), 1080 x 1920 px (Story)", assignee: "Sir Mark" },
+      { name: "Winners", size: "1080 x 1080 px (Square), 1080 x 1920 px (Story)", assignee: "Sir Mark" }
     ]
   },
   {
     category: "Wayfinding Signage",
     tasks: [
-      { name: "VIP lounge, toilets, billeting quarters", size: "TBD", assignee: "TBD" }
+      { name: "VIP lounge, toilets, billeting quarters", size: "TBD", assignee: "Julia Yzzabel Roa, Nathe Rey Amar, Lindsay Pillora" }
     ]
   },
   {
     category: "Motion",
     tasks: [
-      { name: "Digital background for LED", size: "1920 x 1080 px", assignee: "TBD" },
-      { name: "Timer with Contest Number on Side", size: "1920 x 1080 px", assignee: "TBD" },
-      { name: "Intro/Extro Logo Animation", size: "1920 x 1080 px", assignee: "TBD" }
+      { name: "Digital background for LED", size: "1920 x 1080 px", assignee: "Ceejay Ledesma and Team" },
+      { name: "Timer with Contest Number on Side", size: "1920 x 1080 px", assignee: "Ceejay Ledesma and Team" },
+      { name: "Intro/Extro Logo Animation", size: "1920 x 1080 px", assignee: "Ceejay Ledesma and Team" }
     ]
   },
   {
     category: "Zoom Background",
     tasks: [
-      { name: "Opening and Closing", size: "1920 x 1080 px", assignee: "TBD" }
+      { name: "Opening and Closing", size: "1920 x 1080 px", assignee: "Link Team" }
     ]
   },
   {
     category: "Photo Op Wall Design",
     tasks: [
-      { name: "Wall Design Mockup", size: "TBD", assignee: "TBD" }
+      { name: "Wall Design Mockup", size: "TBD", assignee: "Quela Magbanua, King Rodrigo, Glenn Gabriel Angelo Dipon" }
     ]
   },
   {
     category: "Official Program",
     tasks: [
-      { name: "Program Booklet", size: "TBD", assignee: "TBD" }
+      { name: "Program Booklet", size: "TBD", assignee: "Marey" }
     ]
   },
   {
