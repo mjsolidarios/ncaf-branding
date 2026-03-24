@@ -1380,7 +1380,7 @@ export function App() {
                 </label>
               </div>
 
-              <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-dp-blast" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+              <a className="asset-canva-link" href="https://www.canva.com/design/DAHEPe1J5JQ/4RGRJl8rpv6xt6-ZGc0FVg/edit?utm_content=DAHEPe1J5JQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer">Open in Canva</a>
             </div>
           </div>
         </section>
