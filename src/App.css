@@ -1769,7 +1769,12 @@ h4 {
     .announcement-card,
     .story-card-social,
     .dp-blast-card,
-    .tarp-card {
+    .tarp-card,
+    .fb-cover-photo-card,
+    .logo-asset-card,
+    .email-card,
+    .lowerthird-card,
+    .merch-card {
         grid-column: span 1;
     }
 
