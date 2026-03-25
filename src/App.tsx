@@ -1154,7 +1154,7 @@ export function App() {
                   <span className="asset-category category-presentation">Presentation</span>
                   <h3>Keynote Title Slide</h3>
                   <p className="asset-note">Woven Bone base with Heritage Green accent bar and light grid watermark. Premium editorial negative space throughout.</p>
-                  <a className="asset-canva-link" href="https://www.canva.com/design/DAG-temp-keynote-title-slide" target="_blank" rel="noopener noreferrer">Open in Canva</a>
+                  <a className="asset-canva-link" href="https://canva.link/cmn8a8onzva5alm" target="_blank" rel="noopener noreferrer">Open in Canva</a>
                 </div>
               </article>
 
